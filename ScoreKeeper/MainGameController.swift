@@ -12,9 +12,6 @@ class MainGameController: UITableViewController {
 
     @IBOutlet var playersInGame: UITableView!
 
-
-    
-    
     
     var players = [Player]()
     
