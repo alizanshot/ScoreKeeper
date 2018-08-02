@@ -11,10 +11,13 @@ import UIKit
 class MainGameController: UITableViewController {
 
     @IBOutlet var playersInGame: UITableView!
-
+    var playerName = ""
+    var losingPlayer = ""
+    var tiedPlayers: [String] = []
     
     var players = [Player]()
     
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,11 +26,13 @@ class MainGameController: UITableViewController {
         
         // Uncomment the following line to preserve selection between presentations
          self.clearsSelectionOnViewWillAppear = false
+        navigationItem.title = "Game Name"
 
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
         hideKeyboardWhenTappedAround()
+        
+    
     }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -49,58 +54,68 @@ class MainGameController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "playerInGameCell", for: indexPath)
-
-        cell.textLabel?.text = players[indexPath.row].name
+        cell.textLabel?.text  = players[indexPath.row].name
+       // cell.textLabel?.text = players[indexPath.row].name
         //makes is so that cell isn't highlighted when selected
         cell.selectionStyle = UITableViewCellSelectionStyle.none
 
         return cell
     }
     
-
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            // Delete the row from the data source
+            players.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+        } 
     }
-    */
 
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
 
     
     // MARK: - Navigation
+    
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        var largestScore = 0
+        var smallestScore = 0
+        //var playerName = ""
+        //for loop is to check which cell contains the highest score and set playerName to the person in that cell
+        for index in 0..<players.count{
+            let cell = playersInGame.cellForRow(at: IndexPath(row: index, section: 0)) as! TableViewCell
+            let score = Int(cell.scoreTextField.text ?? "0")!
+            
+            if score > largestScore{
+                largestScore = score
+                playerName = ((cell.textLabel?.text)! + " is the winner!")
+            }
+            else if score < largestScore{
+                smallestScore = score
+                
+                losingPlayer = ((cell.textLabel?.text)! + " is the loser")
+                
+            }
+            else if score == largestScore{
+                playerName = "There is a tie!"
+            }
+           
+            
+            
+        }
+        print(tiedPlayers)
+        //transfering winningPlayer to EndOfGameViewController to be displayed
+        if segue.identifier == "endGame"{
+            if let destination = segue.destination as? EndOfGameViewController{
+                destination.playerWithLargestScore = playerName
+            }
+            if let destination2 = segue.destination as? EndOfGameViewController{
+                destination2.playerWithSmallestScrore = losingPlayer
+            }
+        }
+        
+    
+        // Print the high scoring player here
+        print(playerName)
+        print(losingPlayer)
     }
     
 

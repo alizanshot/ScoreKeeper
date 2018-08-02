@@ -12,11 +12,16 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var newPlayerTextField: UITextField!
+    
+
+    
     var players: [Player] = []
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
        
+        //allows me to add textfield info to tableview 
         newPlayerTextField?.delegate = self
         newPlayerTextField?.returnKeyType = .next
         
@@ -24,9 +29,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         hideKeyboardWhenTappedAround()
         tableView?.allowsSelection = false
         
-        
     
     }
+    
 
     
     override func didReceiveMemoryWarning() {
@@ -72,6 +77,15 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            players.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
+    }
+    
+    
 
     
     @IBAction func addButtonTapped(_ sender: Any) {
@@ -102,7 +116,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         if segue.identifier == "createGame" {
             if let destination = segue.destination as? MainGameController{
 //                destination.playersInGame = sender as? UITableView
-                print("Players are being sent over to Main View Controller: \(players) \(players.count)")
                 destination.players = players
             }
         }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		91022FB92112761F00B5B64F /* StartNewGameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91022FB82112761F00B5B64F /* StartNewGameController.swift */; };
 		914ADC652108FCE2004A47AA /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914ADC642108FCE2004A47AA /* Player.swift */; };
 		914ADC6721094CE7004A47AA /* MainGameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914ADC6621094CE7004A47AA /* MainGameController.swift */; };
 		9161C9CF21065B5200858FD8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9161C9CE21065B5200858FD8 /* AppDelegate.swift */; };
@@ -16,9 +17,11 @@
 		9161C9D921065B5600858FD8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9161C9D821065B5600858FD8 /* Assets.xcassets */; };
 		9161C9DC21065B5600858FD8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9161C9DA21065B5600858FD8 /* LaunchScreen.storyboard */; };
 		917083EF210A84E50083870D /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 917083EE210A84E50083870D /* TableViewCell.swift */; };
+		91D3AF02210F80330082A328 /* EndOfGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D3AF01210F80330082A328 /* EndOfGameViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		91022FB82112761F00B5B64F /* StartNewGameController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartNewGameController.swift; sourceTree = "<group>"; };
 		914ADC642108FCE2004A47AA /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		914ADC6621094CE7004A47AA /* MainGameController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainGameController.swift; sourceTree = "<group>"; };
 		9161C9CB21065B5200858FD8 /* ScoreKeeper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ScoreKeeper.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -30,6 +33,7 @@
 		9161C9DB21065B5600858FD8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9161C9DD21065B5600858FD8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		917083EE210A84E50083870D /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		91D3AF01210F80330082A328 /* EndOfGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndOfGameViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,10 +68,12 @@
 			children = (
 				9161C9CE21065B5200858FD8 /* AppDelegate.swift */,
 				9161C9D021065B5200858FD8 /* ViewController.swift */,
+				91022FB82112761F00B5B64F /* StartNewGameController.swift */,
 				914ADC6621094CE7004A47AA /* MainGameController.swift */,
+				91D3AF01210F80330082A328 /* EndOfGameViewController.swift */,
+				917083EE210A84E50083870D /* TableViewCell.swift */,
 				914ADC642108FCE2004A47AA /* Player.swift */,
 				9161C9D221065B5200858FD8 /* Main.storyboard */,
-				917083EE210A84E50083870D /* TableViewCell.swift */,
 				9161C9D821065B5600858FD8 /* Assets.xcassets */,
 				9161C9DA21065B5600858FD8 /* LaunchScreen.storyboard */,
 				9161C9DD21065B5600858FD8 /* Info.plist */,
@@ -149,8 +155,10 @@
 			files = (
 				914ADC652108FCE2004A47AA /* Player.swift in Sources */,
 				9161C9D121065B5200858FD8 /* ViewController.swift in Sources */,
+				91D3AF02210F80330082A328 /* EndOfGameViewController.swift in Sources */,
 				914ADC6721094CE7004A47AA /* MainGameController.swift in Sources */,
 				917083EF210A84E50083870D /* TableViewCell.swift in Sources */,
+				91022FB92112761F00B5B64F /* StartNewGameController.swift in Sources */,
 				9161C9CF21065B5200858FD8 /* AppDelegate.swift in Sources */,
 				9161C9D721065B5200858FD8 /* ScoreKeeper.xcdatamodeld in Sources */,
 			);

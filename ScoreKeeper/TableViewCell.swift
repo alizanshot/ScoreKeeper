@@ -16,6 +16,8 @@ class TableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+    
+    
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -36,13 +38,15 @@ class TableViewCell: UITableViewCell {
     
     @IBAction func subtractButtonTapped(_ sender: Any) {
         guard var score = Int(scoreTextField.text!) else {
-            scoreTextField.text = "1"
+            scoreTextField.text = "-1"
             return
             
         }
         score -= 1
         scoreTextField.text = String(score)
     }
+    
+
     
     
 
