@@ -12,11 +12,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var newPlayerTextField: UITextField!
-    
-
+    @IBOutlet weak var newGameLabel: UILabel!
+    @IBOutlet weak var oldGameLabel: UILabel!
     
     var players: [Player] = []
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,9 +27,14 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         hideKeyboardWhenTappedAround()
         tableView?.allowsSelection = false
+        newGameLabel?.layer.masksToBounds = true
+        newGameLabel?.layer.cornerRadius = 10
+        oldGameLabel?.layer.masksToBounds = true
+        oldGameLabel?.layer.cornerRadius = 10
         
     
     }
+    
     
 
     
@@ -84,29 +88,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
-    
-    
 
-    
-    @IBAction func addButtonTapped(_ sender: Any) {
-    //adding whatever is in the text field to the table view when the users are deciding who is going to be in the game.
-//        guard let text = newPlayerTextField.text else {return}
-//
-//        if text.isEmpty {
-//            return
-//        }
-//
-//        let playerName = newPlayerTextField.text
-//        guard let name = playerName else {return}
-//
-//        let newPlayer = Player(name: name, score: 0)
-//        players.append(newPlayer)
-//        print(players.count)
-//
-//        tableView.reloadData()
-//        newPlayerTextField.text? = ""
-    }
-    
     @IBAction func createGame(_ sender: Any) {
         performSegue(withIdentifier: "createGame", sender: players)
         
@@ -119,6 +101,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 destination.players = players
             }
         }
+    }
+    
+    @IBAction func unwindWithSegue(_ segue: UIStoryboardSegue) {
+        
     }
 
 }
@@ -135,4 +121,30 @@ extension UIViewController {
         view.endEditing(true)
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//extension UIViewController{
+//    func rotate() {
+//        let rotation: CABasicAnimation = CABasicAnimation(keyPath: "transform.rotation.z")
+//        rotation.toValue = Double.pi * 2
+//        rotation.duration = 0.25 // or however long you want ...
+//        rotation.isCumulative = true
+//        rotation.repeatCount = Float.greatestFiniteMagnitude
+//       
+//    }
+//}
 

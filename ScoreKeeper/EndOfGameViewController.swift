@@ -25,6 +25,7 @@ class EndOfGameViewController:  UIViewController {
         //checking that value is not nil and also storing the winningPlayer in a variable to wait for this view controller to load, and then after it loads i use the playerWithLargestScore variable in the MainGameController and pass it into this controller. Basically I couldn't directly pass the data into the winningPlayer label because it hadn't loaded yet
         if let text = playerWithLargestScore {
             winningPlayer?.text = text
+            
         } else {
             winningPlayer?.text = "0"
         }

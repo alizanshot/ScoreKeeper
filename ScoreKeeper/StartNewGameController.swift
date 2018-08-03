@@ -14,9 +14,16 @@ class StartNewGameController: UIViewController {
     @IBOutlet weak var nameOfGameTextField: UITextField!
     
     
+    
+    @IBOutlet weak var startGameButtonLabel: UILabel!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         hideKeyboardWhenTappedAround()
+        
+        startGameButtonLabel.layer.masksToBounds = true
+        startGameButtonLabel.layer.cornerRadius = 10
         
         
     

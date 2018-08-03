@@ -77,23 +77,24 @@ class MainGameController: UITableViewController {
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         var largestScore = 0
-        var smallestScore = 0
+       // var smallestScore = 0
         //var playerName = ""
         //for loop is to check which cell contains the highest score and set playerName to the person in that cell
         for index in 0..<players.count{
             let cell = playersInGame.cellForRow(at: IndexPath(row: index, section: 0)) as! TableViewCell
             let score = Int(cell.scoreTextField.text ?? "0")!
+    
             
             if score > largestScore{
                 largestScore = score
                 playerName = ((cell.textLabel?.text)! + " is the winner!")
             }
-            else if score < largestScore{
-                smallestScore = score
-                
-                losingPlayer = ((cell.textLabel?.text)! + " is the loser")
-                
-            }
+//            else if score < largestScore{
+//                smallestScore = score
+//
+//                losingPlayer = ((cell.textLabel?.text)! + " is the loser")
+//
+//            }
             else if score == largestScore{
                 playerName = "There is a tie!"
             }
@@ -106,6 +107,7 @@ class MainGameController: UITableViewController {
         if segue.identifier == "endGame"{
             if let destination = segue.destination as? EndOfGameViewController{
                 destination.playerWithLargestScore = playerName
+                
             }
             if let destination2 = segue.destination as? EndOfGameViewController{
                 destination2.playerWithSmallestScrore = losingPlayer
