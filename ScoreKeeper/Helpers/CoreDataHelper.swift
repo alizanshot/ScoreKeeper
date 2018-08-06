@@ -25,7 +25,7 @@ struct CoreDataHelper {
     //Game Entity
     static func newGame() -> Game {
         let game = NSEntityDescription.insertNewObject(forEntityName: "Game", into: context) as! Game
-        
+        print(game)
         return game
     }
     
@@ -78,6 +78,8 @@ struct CoreDataHelper {
         savePlayer()
     }
     
+   
+    
     static func retrievePlayers() -> [Player] {
         do {
             let fetchRequest = NSFetchRequest<Player>(entityName: "Player")
@@ -90,6 +92,7 @@ struct CoreDataHelper {
             return []
         }
     }
+
 }
 
 

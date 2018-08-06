@@ -34,8 +34,12 @@ class StartNewGameController: UIViewController {
     
     @IBAction func startGameButtonTapped(_ sender: Any) {
         //savedGames.append(nameOfGameTextField.text!)
-       
-        //CoreDataHelper.saveGame()
+        
+        let newGame = CoreDataHelper.newGame()
+        newGame.name = nameOfGameTextField.text!
+        newGame.date = Date()
+    
+        CoreDataHelper.saveGame()
         //print(savedGames)
     
 
@@ -53,24 +57,16 @@ class StartNewGameController: UIViewController {
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "startGame"{
-            savedGames.append(nameOfGameTextField.text!)
-            if let destination = segue.destination as? OldGameTableViewController{
-                destination.recievedSavedGames = savedGames
-                print(savedGames)
-            }
-        }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 //        if segue.identifier == "startGame"{
+//            savedGames.append(nameOfGameTextField.text!)
 //            if let destination = segue.destination as? OldGameTableViewController{
-//                destination.recievedSavedGames = savedGames
+////                destination.recievedSavedGames = savedGames
 //                print(savedGames)
-//
 //            }
-//
 //        }
-        
-    }
+//        
+//    }
 
 
 }

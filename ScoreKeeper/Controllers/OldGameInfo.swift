@@ -1,94 +1,54 @@
 //
-//  OldGameTableViewController.swift
+//  OldGameInfo.swift
 //  ScoreKeeper
 //
-//  Created by Alizandro Lopez on 8/3/18.
+//  Created by Alizandro Lopez on 8/6/18.
 //  Copyright © 2018 Alizandro. All rights reserved.
 //
 
 import UIKit
 
+class OldGameInfo: UITableViewController {
+    
+    
 
-class OldGameTableViewController: UITableViewController, UITextFieldDelegate{
-    
-    var recievedSavedGames = [Game]() {
-        didSet {
-            tableView.reloadData()
-        }
-    }
-    
-    
-    
-//        didSet {
-//            tableView.reloadData()
-//        }
-//    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        recievedSavedGames = CoreDataHelper.retrieveGames()
-//        tableView.reloadData()
-        print("The game is called \(recievedSavedGames)")
-        
+
         // Uncomment the following line to preserve selection between presentations
-         self.clearsSelectionOnViewWillAppear = false
+        // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
-        
     }
-    
-    
-    
-    
-    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-        
     }
-    
-    
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
-        
+        return 0
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return recievedSavedGames.count
-        
-    }
-
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         tableView.rowHeight = 80
-        let cell = tableView.dequeueReusableCell(withIdentifier: "oldGame", for: indexPath) as! OldGameTableViewCell
-        let savedGame = recievedSavedGames[indexPath.row]
-        
-        cell.oldGameNameLabel.text = savedGame.name
-        cell.dateLabel.text = savedGame.date?.convertToString()
-        
-            //recievedSavedGames[indexPath.row].name
-    
-//        cell.dateLabel.text =
-//        let date = OldGameTableViewCell()
-//        date.creationDate = Date()
-        
-       // cell.dateLabel.text = recievedSavedGames[indexPath.row].date
-    
-    
-        // cell.textLabel?.text  = players[indexPath.row].name
-        return cell
-        
+        return 0
     }
-    
 
+    /*
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+
+        // Configure the cell...
+
+        return cell
+    }
+    */
 
     /*
     // Override to support conditional editing of the table view.
@@ -98,17 +58,17 @@ class OldGameTableViewController: UITableViewController, UITextFieldDelegate{
     }
     */
 
-    
+    /*
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            CoreDataHelper.delete(game: recievedSavedGames[indexPath.row])
-           // CoreDataHelper.delete(game: recievedSavedGames)
-            recievedSavedGames.remove(at: indexPath.row)
-            
-        }
+            // Delete the row from the data source
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        } else if editingStyle == .insert {
+            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+        }    
     }
-
+    */
 
     /*
     // Override to support rearranging the table view.
