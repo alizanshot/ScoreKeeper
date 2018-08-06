@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Player {
+struct player {
     var name: String
     var score: Int
     //var date: Date

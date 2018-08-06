@@ -15,26 +15,30 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     @IBOutlet weak var newGameLabel: UILabel!
     @IBOutlet weak var oldGameLabel: UILabel!
     
-    var players: [Player] = []
+    var players: [player] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
        
         //allows me to add textfield info to tableview 
         newPlayerTextField?.delegate = self
-        newPlayerTextField?.returnKeyType = .next
+        newPlayerTextField?.returnKeyType = .default
+    
         
         
-        hideKeyboardWhenTappedAround()
+       // hideKeyboardWhenTappedAround()
+        
         tableView?.allowsSelection = false
         newGameLabel?.layer.masksToBounds = true
         newGameLabel?.layer.cornerRadius = 10
         oldGameLabel?.layer.masksToBounds = true
         oldGameLabel?.layer.cornerRadius = 10
         
+        
     
     }
     
+   
     
 
     
@@ -42,27 +46,40 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+
     
-    func textFieldShouldReturn(_ newPlayerTextField: UITextField) -> Bool {
-//        newPlayerTextField.resignFirstResponder()
-//        return true
-        guard let text = newPlayerTextField.text else {return false}
+    func addPlayersFromTextFieldToTableView(){
+        guard let text = newPlayerTextField.text else {return}
         
         if text.isEmpty {
-            return false
+            return
         }
         
         let playerName = newPlayerTextField.text
-        guard let name = playerName else {return false}
+        guard let name = playerName else {return}
         
-        let newPlayer = Player(name: name, score: 0)
+        let newPlayer = player(name: name, score: 0)
         players.append(newPlayer)
         print(players.count)
         
         tableView.reloadData()
         newPlayerTextField.text? = ""
-        return true
+        
     }
+    
+    func textFieldShouldReturn(_ newPlayerTextField: UITextField) -> Bool {
+       // addPlayersFromTextFieldToTableView()
+        self.view.endEditing(true)
+        return false
+        
+    }
+    
+    
+    @IBAction func addButtonTapped(_ sender: Any) {
+        addPlayersFromTextFieldToTableView()
+    }
+    
+    
     
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -86,12 +103,15 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         if editingStyle == .delete {
             players.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
+            
+            
+            
+            
         }
     }
 
     @IBAction func createGame(_ sender: Any) {
         performSegue(withIdentifier: "createGame", sender: players)
-        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -103,9 +123,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         }
     }
     
-    @IBAction func unwindWithSegue(_ segue: UIStoryboardSegue) {
-        
-    }
+    
 
 }
 

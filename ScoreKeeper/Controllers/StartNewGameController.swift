@@ -9,11 +9,12 @@
 import UIKit
 
 class StartNewGameController: UIViewController {
+    
+    var savedGames: [String] = []
 
-    @IBOutlet weak var noGameNameLabel: UILabel!
+  //  @IBOutlet weak var noGameNameLabel: UILabel!
     @IBOutlet weak var nameOfGameTextField: UITextField!
-    
-    
+
     
     @IBOutlet weak var startGameButtonLabel: UILabel!
     
@@ -29,6 +30,17 @@ class StartNewGameController: UIViewController {
     
         // Do any additional setup after loading the view.
     }
+    
+    
+    @IBAction func startGameButtonTapped(_ sender: Any) {
+        //savedGames.append(nameOfGameTextField.text!)
+       
+        //CoreDataHelper.saveGame()
+        //print(savedGames)
+    
+
+    }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -36,19 +48,35 @@ class StartNewGameController: UIViewController {
     }
     
     
-    
-    
-    
-    
-
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
+    
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "startGame"{
+            savedGames.append(nameOfGameTextField.text!)
+            if let destination = segue.destination as? OldGameTableViewController{
+                destination.recievedSavedGames = savedGames
+                print(savedGames)
+            }
+        }
+//        if segue.identifier == "startGame"{
+//            if let destination = segue.destination as? OldGameTableViewController{
+//                destination.recievedSavedGames = savedGames
+//                print(savedGames)
+//
+//            }
+//
+//        }
+        
     }
-    */
+
 
 }
+
+
+
+
+
+

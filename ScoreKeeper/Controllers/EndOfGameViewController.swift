@@ -11,12 +11,14 @@ import UIKit
 class EndOfGameViewController:  UIViewController {
     
     var playerWithLargestScore: String?
+    var secondPlacePlayer: String?
     var playerWithSmallestScrore: String?
     
     var player: Player?
     
     @IBOutlet weak var winningPlayer: UILabel?
-    @IBOutlet weak var losingPlayer: UILabel!
+    
+    @IBOutlet weak var secondPlaceLabel: UILabel!
     
     
     override func viewDidLoad() {
@@ -30,11 +32,10 @@ class EndOfGameViewController:  UIViewController {
             winningPlayer?.text = "0"
         }
         
-        if let losingText = playerWithSmallestScrore {
-            losingPlayer?.text = losingText
-        } else {
-            losingPlayer?.text = "0"
-        }
+//        if let text2 = secondPlacePlayer{
+//            secondPlaceLabel?.text = 
+//        }
+      
         
     }
 
@@ -42,6 +43,8 @@ class EndOfGameViewController:  UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+
     
 
     

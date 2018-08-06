@@ -15,7 +15,7 @@ class MainGameController: UITableViewController {
     var losingPlayer = ""
     var tiedPlayers: [String] = []
     
-    var players = [Player]()
+    var players = [player]()
     
 
     
@@ -82,7 +82,9 @@ class MainGameController: UITableViewController {
         //for loop is to check which cell contains the highest score and set playerName to the person in that cell
         for index in 0..<players.count{
             let cell = playersInGame.cellForRow(at: IndexPath(row: index, section: 0)) as! TableViewCell
+            
             let score = Int(cell.scoreTextField.text ?? "0")!
+         
     
             
             if score > largestScore{
@@ -109,15 +111,15 @@ class MainGameController: UITableViewController {
                 destination.playerWithLargestScore = playerName
                 
             }
-            if let destination2 = segue.destination as? EndOfGameViewController{
-                destination2.playerWithSmallestScrore = losingPlayer
-            }
+//            else if let destination2 = segue.destination as? EndOfGameViewController{
+//                destination2.playerWithSmallestScrore = losingPlayer
+//            }
         }
         
-    
+
         // Print the high scoring player here
         print(playerName)
-        print(losingPlayer)
+        //print(losingPlayer)
     }
     
 
