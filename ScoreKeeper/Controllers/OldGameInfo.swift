@@ -10,8 +10,8 @@ import UIKit
 
 class OldGameInfo: UITableViewController {
     
+   
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
 

@@ -293,7 +293,7 @@
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="Rwq-4O-P2B"/>
                         <barButtonItem title="End Game" id="xzO-1y-nFa">
                             <connections>
-                                <action selector="endGameButtonTapped:" destination="gvE-y2-XI9" id="1WC-sD-PAO"/>
+                                <action selector="endGameButtonPressed:" destination="TdD-Ru-OiN" id="i7v-mc-Opt"/>
                                 <segue destination="hLb-1g-I6X" kind="show" identifier="endGame" id="FBe-nm-q6i"/>
                             </connections>
                         </barButtonItem>
@@ -304,7 +304,6 @@
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="07i-fq-hFt" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="gvE-y2-XI9" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="992.79999999999995" y="819.94002998500753"/>
         </scene>
@@ -407,57 +406,41 @@
             </objects>
             <point key="canvasLocation" x="994.39999999999998" y="126.38680659670166"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Old Game Info-->
         <scene sceneID="8P2-qS-R3b">
             <objects>
-                <tableViewController id="nVl-7v-Tkq" sceneMemberID="viewController">
+                <tableViewController id="nVl-7v-Tkq" customClass="OldGameInfo" customModule="ScoreKeeper" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="1HW-Ct-Dpg">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="playerInGameCell" rowHeight="86" id="aWj-Yg-6uk" customClass="TableViewCell" customModule="ScoreKeeper" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="86"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Pxq-o7-GrK" customClass="OldGameInfoTableViewCell" customModule="ScoreKeeper" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="aWj-Yg-6uk" id="Kbr-o4-gQz">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="85.5"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Pxq-o7-GrK" id="jh2-bX-uEi">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eRF-eV-hkY">
-                                            <rect key="frame" x="242" y="22.5" width="121" height="40"/>
-                                            <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jfq-A2-nW6">
-                                                    <rect key="frame" x="0.0" y="0.0" width="30" height="40"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="23"/>
-                                                    <state key="normal" title="-"/>
-                                                    <connections>
-                                                        <action selector="subtractButtonTapped:" destination="aWj-Yg-6uk" eventType="touchUpInside" id="n36-u3-sNi"/>
-                                                    </connections>
-                                                </button>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Score" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8pf-Mm-rRE">
-                                                    <rect key="frame" x="30" y="0.0" width="61" height="40"/>
-                                                    <nil key="textColor"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                    <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
-                                                </textField>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="57o-zR-Bun">
-                                                    <rect key="frame" x="91" y="0.0" width="30" height="40"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="23"/>
-                                                    <state key="normal" title="+"/>
-                                                    <connections>
-                                                        <action selector="addButtonTapped:" destination="aWj-Yg-6uk" eventType="touchUpInside" id="Ltn-uy-qD7"/>
-                                                    </connections>
-                                                </button>
-                                            </subviews>
-                                        </stackView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Old Player" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DhN-NV-zsX">
+                                            <rect key="frame" x="28" y="11" width="78" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Old Score" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jsm-rf-uoA">
+                                            <rect key="frame" x="270" y="11" width="76" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
-                                    <constraints>
-                                        <constraint firstAttribute="trailing" secondItem="eRF-eV-hkY" secondAttribute="trailing" constant="12" id="eRt-ua-yB3"/>
-                                        <constraint firstItem="eRF-eV-hkY" firstAttribute="centerY" secondItem="Kbr-o4-gQz" secondAttribute="centerY" id="vcc-eh-hpv"/>
-                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="scoreTextField" destination="8pf-Mm-rRE" id="pB3-tN-td8"/>
+                                    <outlet property="oldPlayerLabel" destination="DhN-NV-zsX" id="HMa-iW-rNb"/>
+                                    <outlet property="oldScoreLabel" destination="jsm-rf-uoA" id="CCF-dc-cDN"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -469,7 +452,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cnt-RQ-Se9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1862" y="126"/>
+            <point key="canvasLocation" x="1861.5999999999999" y="125.4872563718141"/>
         </scene>
     </scenes>
     <resources>

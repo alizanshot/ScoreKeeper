@@ -122,5 +122,18 @@ class MainGameController: UITableViewController {
         //print(losingPlayer)
     }
     
+    
+    @IBAction func endGameButtonPressed(_ sender: Any) {
+        
+        
+    }
+    
+    
 
 }
+
+
+
+
+
+
