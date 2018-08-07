@@ -120,6 +120,8 @@ class MainGameController: UITableViewController {
         // Print the high scoring player here
         print(playerName)
         //print(losingPlayer)
+        
+        
     }
     
     

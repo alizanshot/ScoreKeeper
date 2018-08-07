@@ -22,7 +22,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
        
         //allows me to add textfield info to tableview 
         newPlayerTextField?.delegate = self
-        newPlayerTextField?.returnKeyType = .default
+        newPlayerTextField?.returnKeyType = .done
     
         
         

@@ -104,6 +104,34 @@
             </objects>
             <point key="canvasLocation" x="234.40000000000001" y="126.38680659670166"/>
         </scene>
+        <!--Table View Controller-->
+        <scene sceneID="PS4-si-LZJ">
+            <objects>
+                <tableViewController id="kXM-8P-zp4" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="I2P-Z6-eh5">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="bfY-3Y-GQ8">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bfY-3Y-GQ8" id="8np-fW-jZx">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="kXM-8P-zp4" id="hqs-5p-aK6"/>
+                            <outlet property="delegate" destination="kXM-8P-zp4" id="vDy-qk-u9q"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Lga-hL-GzE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1446" y="820"/>
+        </scene>
         <!--Start New Game Controller-->
         <scene sceneID="god-2e-Ibv">
             <objects>
@@ -293,7 +321,7 @@
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="Rwq-4O-P2B"/>
                         <barButtonItem title="End Game" id="xzO-1y-nFa">
                             <connections>
-                                <action selector="endGameButtonPressed:" destination="TdD-Ru-OiN" id="i7v-mc-Opt"/>
+                                <action selector="endGameButtonTapped:" destination="gvE-y2-XI9" id="hke-ob-ngc"/>
                                 <segue destination="hLb-1g-I6X" kind="show" identifier="endGame" id="FBe-nm-q6i"/>
                             </connections>
                         </barButtonItem>
@@ -304,6 +332,7 @@
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="07i-fq-hFt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="gvE-y2-XI9" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="992.79999999999995" y="819.94002998500753"/>
         </scene>
@@ -404,7 +433,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ptk-aQ-J4C" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="994.39999999999998" y="126.38680659670166"/>
+            <point key="canvasLocation" x="1425" y="125"/>
         </scene>
         <!--Old Game Info-->
         <scene sceneID="8P2-qS-R3b">
@@ -452,7 +481,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cnt-RQ-Se9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1861.5999999999999" y="125.4872563718141"/>
+            <point key="canvasLocation" x="2374" y="126"/>
         </scene>
     </scenes>
     <resources>
