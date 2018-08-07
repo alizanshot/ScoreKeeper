@@ -37,6 +37,7 @@ class StartNewGameController: UIViewController {
         
         let newGame = CoreDataHelper.newGame()
         newGame.name = nameOfGameTextField.text!
+        
         newGame.date = Date()
     
         CoreDataHelper.saveGame()
