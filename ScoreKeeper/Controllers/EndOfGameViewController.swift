@@ -41,19 +41,8 @@ class EndOfGameViewController:  UIViewController {
     
     
     
-    @IBAction func endGameButtonTapped(_ sender: Any) {
-        let newPlayer = CoreDataHelper.newPlayer()
-      //  newPlayer.player =
-        //newPlayer.player =
-//        newPlayer.= nameOfGameTextField.text!
-//        newGame.date = Date()
-        
-        //CoreDataHelper.saveGame()
-        //print(savedGames)
-    }
     
     
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

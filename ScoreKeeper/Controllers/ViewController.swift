@@ -14,8 +14,13 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     @IBOutlet weak var newPlayerTextField: UITextField!
     @IBOutlet weak var newGameLabel: UILabel!
     @IBOutlet weak var oldGameLabel: UILabel!
+    @IBOutlet weak var playerGroupLabel: UILabel!
     
-    var players: [player] = []
+    var players = [Player](){
+        didSet {
+            tableView.reloadData()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +38,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         newGameLabel?.layer.cornerRadius = 10
         oldGameLabel?.layer.masksToBounds = true
         oldGameLabel?.layer.cornerRadius = 10
+        playerGroupLabel?.layer.masksToBounds = true
+        playerGroupLabel?.layer.cornerRadius = 10
         
         
     
@@ -58,11 +65,15 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         let playerName = newPlayerTextField.text
         guard let name = playerName else {return}
         
-        let newPlayer = player(name: name, score: 0)
+        let newPlayer = CoreDataHelper.newPlayer()
+        newPlayer.name = name
+        newPlayer.score = 0
+//        CoreDataHelper.savePlayer()
+        
         players.append(newPlayer)
         print(players.count)
         
-        tableView.reloadData()
+        
         newPlayerTextField.text? = ""
         
     }
@@ -79,8 +90,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         addPlayersFromTextFieldToTableView()
     }
     
-    
-    
+
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -92,7 +102,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "newPlayerCell", for: indexPath)
-        cell.textLabel?.text = players[indexPath.row].name
+        cell.textLabel?.text = players[indexPath.row].name as? String
         //makes it so that cell isn't highlited when selected
         cell.selectionStyle = UITableViewCellSelectionStyle.none
         
@@ -101,24 +111,61 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            players.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
-            
-            
-            
-            
+            let playerToRemove = players.remove(at: indexPath.row)
+            CoreDataHelper.delete(player: playerToRemove)
+            tableView.deleteRows(at: [indexPath], with: .top)
         }
     }
 
     @IBAction func createGame(_ sender: Any) {
-        performSegue(withIdentifier: "createGame", sender: players)
+        let newGame = CoreDataHelper.newGame()
+        for player in players {
+            //add players to new group
+            player.game = newGame
+        }
+        
+        
+        //TODO: prompt user to add a group?
+        let alertCreateAGroup = UIAlertController(title: nil, message: "Would you like to create a reusable group?", preferredStyle: .alert)
+        
+        let noButton = UIAlertAction(title: "No", style: .default) { (_) in
+            CoreDataHelper.save()
+            self.performSegue(withIdentifier: "createGame", sender: newGame)
+        }
+        
+        let yesButton = UIAlertAction(title: "Yes", style: .default) { (_) in
+            
+            
+            let alertGroupTitle = UIAlertController(title: "Create a Group", message: "enter the title of this new group", preferredStyle: .alert)
+            alertGroupTitle.addTextField(configurationHandler: { (textField) in
+                textField.placeholder = "group title"
+            })
+            let nextButton = UIAlertAction(title: "Next", style: .default, handler: { (_) in
+                //create the group
+                let newGroup = CoreDataHelper.newGroup(for: newGame)
+                newGroup.title = alertGroupTitle.textFields!.first!.text!
+                
+                CoreDataHelper.save()
+                self.performSegue(withIdentifier: "createGame", sender: newGame)
+            })
+            
+            alertGroupTitle.addAction(nextButton)
+            self.present(alertGroupTitle, animated: true)
+            
+        }
+        
+        alertCreateAGroup.addAction(noButton)
+        alertCreateAGroup.addAction(yesButton)
+        
+        self.present(alertCreateAGroup, animated: true)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "createGame" {
             if let destination = segue.destination as? MainGameController{
 //                destination.playersInGame = sender as? UITableView
-                destination.players = players
+                destination.currentGame = sender as! Game
+                
             }
         }
     }
@@ -139,30 +186,4 @@ extension UIViewController {
         view.endEditing(true)
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//extension UIViewController{
-//    func rotate() {
-//        let rotation: CABasicAnimation = CABasicAnimation(keyPath: "transform.rotation.z")
-//        rotation.toValue = Double.pi * 2
-//        rotation.duration = 0.25 // or however long you want ...
-//        rotation.isCumulative = true
-//        rotation.repeatCount = Float.greatestFiniteMagnitude
-//       
-//    }
-//}
 

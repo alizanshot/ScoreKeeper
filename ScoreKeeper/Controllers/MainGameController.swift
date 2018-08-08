@@ -15,17 +15,15 @@ class MainGameController: UITableViewController {
     var losingPlayer = ""
     var tiedPlayers: [String] = []
     
-    var players = [player]()
+    var currentGame: Game!
     
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        var playersInGame = players
-        print(players.count)
         
         // Uncomment the following line to preserve selection between presentations
-         self.clearsSelectionOnViewWillAppear = false
+//         self.clearsSelectionOnViewWillAppear = false
         navigationItem.title = "Game Name"
 
         hideKeyboardWhenTappedAround()
@@ -48,13 +46,16 @@ class MainGameController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return players.count
+        return currentGame.players.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        tableView.rowHeight = 90
         let cell = tableView.dequeueReusableCell(withIdentifier: "playerInGameCell", for: indexPath)
-        cell.textLabel?.text  = players[indexPath.row].name
+        
+        let player = currentGame.players[indexPath.row]
+        cell.textLabel?.text  = player.name
        // cell.textLabel?.text = players[indexPath.row].name
         //makes is so that cell isn't highlighted when selected
         cell.selectionStyle = UITableViewCellSelectionStyle.none
@@ -64,7 +65,8 @@ class MainGameController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            players.remove(at: indexPath.row)
+            let playerToRemove = currentGame.players[indexPath.row]
+            CoreDataHelper.delete(player: playerToRemove)
             tableView.deleteRows(at: [indexPath], with: .fade)
         } 
     }
@@ -80,6 +82,9 @@ class MainGameController: UITableViewController {
        // var smallestScore = 0
         //var playerName = ""
         //for loop is to check which cell contains the highest score and set playerName to the person in that cell
+        
+        let players = currentGame.players
+        
         for index in 0..<players.count{
             let cell = playersInGame.cellForRow(at: IndexPath(row: index, section: 0)) as! TableViewCell
             
@@ -123,12 +128,7 @@ class MainGameController: UITableViewController {
         
         
     }
-    
-    
-    @IBAction func endGameButtonPressed(_ sender: Any) {
-        
-        
-    }
+
     
     
 
