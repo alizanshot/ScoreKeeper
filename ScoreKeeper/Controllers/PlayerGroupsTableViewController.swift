@@ -72,7 +72,7 @@ class PlayerGroupsTableViewController: UITableViewController {
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-//            CoreDataHelper.delete(group: groups[indexPath.row])
+            CoreDataHelper.delete(group: groups[indexPath.row])
             groups.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
