@@ -18,6 +18,7 @@ class PlayerGroupsTableViewController: UITableViewController {
         groups = CoreDataHelper.retrieveGroups()
         print(groups)
         print(groups.count)
+        navigationItem.title = "Player Groups"
         // Get players from group like this:
         
 //         let players = groups[0].playerGroup

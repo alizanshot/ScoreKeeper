@@ -130,6 +130,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
 
     @IBAction func createGame(_ sender: Any) {
+    
         let newGame = CoreDataHelper.newGame()
         for player in players {
             //add players to new group

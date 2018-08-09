@@ -24,6 +24,17 @@ class OldGameTableViewController: UITableViewController, UITextFieldDelegate{
 //        }
 //    }
     
+//    override func viewWillAppear(_ animated: Bool) {
+//        if recievedSavedGames.isEmpty{
+//            let newGame = CoreDataHelper.newGame()
+//            newGame.name = "No Name"
+//            newGame.date = Date()
+//
+//            CoreDataHelper.save()
+//        }
+//
+//    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         recievedSavedGames = CoreDataHelper.retrieveGames()

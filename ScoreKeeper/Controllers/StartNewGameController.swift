@@ -49,31 +49,33 @@ class StartNewGameController: UIViewController {
         }
         else if savedGames.isEmpty{
             
-            let alertGameTitle = UIAlertController(title: "No Name?", message: "Please enter a name for this game.", preferredStyle: .alert)
+            let newGame = CoreDataHelper.newGame()
+            newGame.name = "No Name"
+            newGame.date = Date()
             
-            alertGameTitle.addTextField(configurationHandler: { (textField) in
-                textField.placeholder = "Game Title"
-//                let newGame = CoreDataHelper.newGame()
-//                newGame.name = textField.text
-//                newGame.date = Date()
+            CoreDataHelper.save()
+            
+//            let alertGameTitle = UIAlertController(title: "No Name?", message: "Please enter a name for this game.", preferredStyle: .alert)
+//            
+//            alertGameTitle.addTextField(configurationHandler: { (textField) in
+//                textField.placeholder = "Game Title"
+////                let newGame = CoreDataHelper.newGame()
+////                newGame.name = textField.text
+////                newGame.date = Date()
+////                
+////                CoreDataHelper.saveGame()
+//            })
+//            
+//            
+//            let okButton = UIAlertAction(title: "Ok", style: .default, handler: { (_) in
 //                
-//                CoreDataHelper.saveGame()
-            })
-            
-            
-            let okButton = UIAlertAction(title: "Ok", style: .default, handler: { (_) in
-                
-                let newGame = CoreDataHelper.newGame()
-                newGame.name = alertGameTitle.textFields!.first!.text!
-                newGame.date = Date()
-                
-                CoreDataHelper.save()
-                
-            })
-            
-            alertGameTitle.addAction(okButton)
-            self.present(alertGameTitle, animated: true, completion: nil)
-            
+//                
+//                
+//            })
+//            
+//            alertGameTitle.addAction(okButton)
+//            self.present(alertGameTitle, animated: true, completion: nil)
+//            
 //            let okButton = UIAlertAction(title: "Ok", style: .default, handler: nil)
 //            alertGameTitle.addAction(okButton)
 //

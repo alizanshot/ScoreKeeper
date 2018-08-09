@@ -82,32 +82,12 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" weight="black" pointSize="18"/>
                                 <inset key="contentEdgeInsets" minX="21" minY="16" maxX="16" maxY="17"/>
-                                <state key="normal" title="Old Game">
+                                <state key="normal" title="History">
                                     <color key="titleColor" name="tcWhite"/>
                                     <color key="titleShadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <segue destination="11v-TH-gsu" kind="show" id="jg0-2K-bi7"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OLE-N8-gyK">
-                                <rect key="frame" x="120" y="400" width="136" height="62"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="1" green="0.27058823529999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pp2-PD-Tfs">
-                                <rect key="frame" x="92" y="400" width="182" height="62"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="18"/>
-                                <inset key="contentEdgeInsets" minX="21" minY="16" maxX="16" maxY="17"/>
-                                <state key="normal" title="Player Group">
-                                    <color key="titleColor" red="1" green="0.9729795752" blue="0.97392138669999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <segue destination="mmQ-C3-YT2" kind="show" id="uTT-92-W2L"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -118,17 +98,16 @@
                     <connections>
                         <outlet property="newGameLabel" destination="Bfk-2Z-AGR" id="Tmw-hk-U1F"/>
                         <outlet property="oldGameLabel" destination="7fn-pF-B7x" id="VuE-dA-glH"/>
-                        <outlet property="playerGroupLabel" destination="OLE-N8-gyK" id="cFg-P9-Xpn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yxM-bg-KUB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="234.40000000000001" y="126.38680659670166"/>
         </scene>
-        <!--Player Groups Table View Controller-->
+        <!--Player Groups-->
         <scene sceneID="aDz-yE-qAK">
             <objects>
-                <tableViewController id="mmQ-C3-YT2" customClass="PlayerGroupsTableViewController" customModule="ScoreKeeper" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Player Groups" id="mmQ-C3-YT2" customClass="PlayerGroupsTableViewController" customModule="ScoreKeeper" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="4To-x6-Kod">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -165,13 +144,22 @@
                             <outlet property="delegate" destination="mmQ-C3-YT2" id="4NB-gr-LD8"/>
                         </connections>
                     </tableView>
+                    <toolbarItems>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="sji-7F-mOi"/>
+                        <barButtonItem title="No Group?" id="Lx2-yV-Vr7">
+                            <connections>
+                                <segue destination="wzw-hR-cM6" kind="show" id="FwE-V2-rVE"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <segue destination="TdD-Ru-OiN" kind="show" identifier="toMainGame" id="zHN-bf-emC"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K4m-5v-QQO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="975.20000000000005" y="-509.59520239880067"/>
+            <point key="canvasLocation" x="-642" y="1584"/>
         </scene>
         <!--Start New Game Controller-->
         <scene sceneID="god-2e-Ibv">
@@ -200,14 +188,14 @@
                                 <rect key="frame" x="130" y="202" width="119" height="62"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" weight="black" pointSize="18"/>
-                                <inset key="contentEdgeInsets" minX="27" minY="26" maxX="27" maxY="23"/>
+                                <inset key="contentEdgeInsets" minX="27" minY="26" maxX="27" maxY="27"/>
                                 <state key="normal" title="Start">
                                     <color key="titleColor" name="tcWhite"/>
                                     <color key="titleShadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="startGameButtonTapped:" destination="W2t-vM-o8X" eventType="touchUpInside" id="gH8-HC-ngg"/>
-                                    <segue destination="wzw-hR-cM6" kind="show" identifier="startGame" id="h6D-cM-0dN"/>
+                                    <segue destination="mmQ-C3-YT2" kind="show" id="tbS-Sf-c1c"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -329,7 +317,7 @@
                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xtb-tg-aqK">
                                             <rect key="frame" x="309" y="25" width="72" height="40"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="47"/>
+                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="47"/>
                                             <inset key="contentEdgeInsets" minX="20" minY="17" maxX="20" maxY="19"/>
                                             <state key="normal" title="+"/>
                                             <connections>
@@ -529,7 +517,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="FBe-nm-q6i"/>
-        <segue reference="Kq3-Bi-vNH"/>
+        <segue reference="zHN-bf-emC"/>
         <segue reference="U7z-5q-Ybm"/>
     </inferredMetricsTieBreakers>
 </document>
