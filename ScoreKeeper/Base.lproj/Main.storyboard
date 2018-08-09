@@ -197,10 +197,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qGs-KC-7y2">
-                                <rect key="frame" x="126" y="202" width="119" height="62"/>
+                                <rect key="frame" x="130" y="202" width="119" height="62"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" weight="black" pointSize="18"/>
-                                <inset key="contentEdgeInsets" minX="21" minY="16" maxX="16" maxY="17"/>
+                                <inset key="contentEdgeInsets" minX="27" minY="26" maxX="27" maxY="23"/>
                                 <state key="normal" title="Start">
                                     <color key="titleColor" name="tcWhite"/>
                                     <color key="titleShadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -276,7 +276,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aHq-Pz-AgT">
-                                <rect key="frame" x="279" y="14" width="108" height="169"/>
+                                <rect key="frame" x="279" y="45" width="96" height="108"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <inset key="contentEdgeInsets" minX="30" minY="30" maxX="30" maxY="30"/>
                                 <state key="normal" title="ADD"/>
@@ -309,45 +309,41 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="playerInGameCell" rowHeight="86" id="e02-VE-pqi" customClass="TableViewCell" customModule="ScoreKeeper" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="86"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="playerInGameCell" rowHeight="96" id="e02-VE-pqi" customClass="TableViewCell" customModule="ScoreKeeper" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="96"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="e02-VE-pqi" id="XPs-UI-Gej">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="85.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="95.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XJi-c4-8oG">
-                                            <rect key="frame" x="242" y="22.5" width="121" height="40"/>
-                                            <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xi9-Rq-uZR">
-                                                    <rect key="frame" x="0.0" y="0.0" width="30" height="40"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="23"/>
-                                                    <state key="normal" title="-"/>
-                                                    <connections>
-                                                        <action selector="subtractButtonTapped:" destination="e02-VE-pqi" eventType="touchUpInside" id="dfl-S4-m2Y"/>
-                                                    </connections>
-                                                </button>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Score" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ISz-sh-T3O">
-                                                    <rect key="frame" x="30" y="0.0" width="61" height="40"/>
-                                                    <nil key="textColor"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                    <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
-                                                </textField>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xtb-tg-aqK">
-                                                    <rect key="frame" x="91" y="0.0" width="30" height="40"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="23"/>
-                                                    <state key="normal" title="+"/>
-                                                    <connections>
-                                                        <action selector="addButtonTapped:" destination="e02-VE-pqi" eventType="touchUpInside" id="rv2-KS-14y"/>
-                                                    </connections>
-                                                </button>
-                                            </subviews>
-                                        </stackView>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xi9-Rq-uZR">
+                                            <rect key="frame" x="181" y="33" width="56" height="24"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="51"/>
+                                            <inset key="contentEdgeInsets" minX="16" minY="15" maxX="21" maxY="18"/>
+                                            <state key="normal" title="-"/>
+                                            <connections>
+                                                <action selector="subtractButtonTapped:" destination="e02-VE-pqi" eventType="touchUpInside" id="dfl-S4-m2Y"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xtb-tg-aqK">
+                                            <rect key="frame" x="309" y="25" width="72" height="40"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="47"/>
+                                            <inset key="contentEdgeInsets" minX="20" minY="17" maxX="20" maxY="19"/>
+                                            <state key="normal" title="+"/>
+                                            <connections>
+                                                <action selector="addButtonTapped:" destination="e02-VE-pqi" eventType="touchUpInside" id="rv2-KS-14y"/>
+                                            </connections>
+                                        </button>
+                                        <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Score" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ISz-sh-T3O">
+                                            <rect key="frame" x="239" y="25" width="80" height="40"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <nil key="textColor"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                            <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                                        </textField>
                                     </subviews>
-                                    <constraints>
-                                        <constraint firstAttribute="trailing" secondItem="XJi-c4-8oG" secondAttribute="trailing" constant="12" id="8HX-6l-uRd"/>
-                                        <constraint firstItem="XJi-c4-8oG" firstAttribute="centerY" secondItem="XPs-UI-Gej" secondAttribute="centerY" id="oAg-q5-eM1"/>
-                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="scoreTextField" destination="ISz-sh-T3O" id="uUM-vS-j2x"/>
@@ -394,7 +390,7 @@
                                     <color key="titleColor" red="1" green="0.97297957520671374" blue="0.97392138668501382" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="xQe-qF-bga" kind="show" animates="NO" id="U7z-5q-Ybm"/>
+                                    <segue destination="xQe-qF-bga" kind="show" identifier="goHome" animates="NO" id="U7z-5q-Ybm"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Winner" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wBE-t7-2SD">
@@ -532,7 +528,8 @@
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="zHN-bf-emC"/>
+        <segue reference="FBe-nm-q6i"/>
+        <segue reference="Kq3-Bi-vNH"/>
         <segue reference="U7z-5q-Ybm"/>
     </inferredMetricsTieBreakers>
 </document>

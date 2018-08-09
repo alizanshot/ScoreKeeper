@@ -7,14 +7,16 @@
 //
 
 import UIKit
+import AVFoundation
+import AudioToolbox
 
 class StartNewGameController: UIViewController {
     
     var savedGames: [String] = []
-
-  //  @IBOutlet weak var noGameNameLabel: UILabel!
+    
+    //  @IBOutlet weak var noGameNameLabel: UILabel!
     @IBOutlet weak var nameOfGameTextField: UITextField!
-
+    
     
     @IBOutlet weak var startGameButtonLabel: UILabel!
     
@@ -27,24 +29,73 @@ class StartNewGameController: UIViewController {
         startGameButtonLabel.layer.cornerRadius = 10
         
         
-    
+        
         // Do any additional setup after loading the view.
     }
     
     
     @IBAction func startGameButtonTapped(_ sender: Any) {
         //savedGames.append(nameOfGameTextField.text!)
+       
         
-        let newGame = CoreDataHelper.newGame()
-        newGame.name = nameOfGameTextField.text!
+        if nameOfGameTextField.text != ""{
+            AudioServicesPlayAlertSound(SystemSoundID(1326))
+            let newGame = CoreDataHelper.newGame()
+            newGame.name = nameOfGameTextField.text!
+            
+            newGame.date = Date()
+            
+            CoreDataHelper.saveGame()
+        }
+        else if savedGames.isEmpty{
+            
+            let alertGameTitle = UIAlertController(title: "No Name?", message: "Please enter a name for this game.", preferredStyle: .alert)
+            
+            alertGameTitle.addTextField(configurationHandler: { (textField) in
+                textField.placeholder = "Game Title"
+//                let newGame = CoreDataHelper.newGame()
+//                newGame.name = textField.text
+//                newGame.date = Date()
+//                
+//                CoreDataHelper.saveGame()
+            })
+            
+            
+            let okButton = UIAlertAction(title: "Ok", style: .default, handler: { (_) in
+                
+                let newGame = CoreDataHelper.newGame()
+                newGame.name = alertGameTitle.textFields!.first!.text!
+                newGame.date = Date()
+                
+                CoreDataHelper.save()
+                
+            })
+            
+            alertGameTitle.addAction(okButton)
+            self.present(alertGameTitle, animated: true, completion: nil)
+            
+//            let okButton = UIAlertAction(title: "Ok", style: .default, handler: nil)
+//            alertGameTitle.addAction(okButton)
+//
+//            self.present(alertGameTitle, animated: true)
+//
+//            let newGame = CoreDataHelper.newGame()
+//            newGame.name = nameOfGameTextField.text!
+//
+//            newGame.date = Date()
+//
+//            CoreDataHelper.saveGame()
+            
+        }
         
-        newGame.date = Date()
+
+        
     
-        CoreDataHelper.saveGame()
         //print(savedGames)
     
 
     }
+
     
 
     override func didReceiveMemoryWarning() {

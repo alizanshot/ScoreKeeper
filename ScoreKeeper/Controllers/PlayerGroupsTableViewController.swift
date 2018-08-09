@@ -87,14 +87,14 @@ class PlayerGroupsTableViewController: UITableViewController {
         let newGame = CoreDataHelper.newGame(from: selectedGroup)
         
         
-        let alertGameTitle = UIAlertController(title: "Create a Game", message: "Enter the title of this new game", preferredStyle: .alert)
+        let alertGameTitle = UIAlertController(title: "Create a Game With This Group", message: "Enter the title of this new game", preferredStyle: .alert)
         alertGameTitle.addTextField(configurationHandler: { (textField) in
-            textField.placeholder = "game title"
+            textField.placeholder = "Game Title"
         })
         let nextButton = UIAlertAction(title: "Start Game", style: .default, handler: { (_) in
             //create the group
             newGame.name = alertGameTitle.textFields!.first!.text!
-            
+            newGame.date = Date()
             CoreDataHelper.save()
             self.performSegue(withIdentifier: "toMainGame", sender: newGame)
         })

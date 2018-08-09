@@ -111,9 +111,21 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            let playerToRemove = players.remove(at: indexPath.row)
-            CoreDataHelper.delete(player: playerToRemove)
-            tableView.deleteRows(at: [indexPath], with: .top)
+//            let playerToRemove = players.remove(at: indexPath.row)
+            print(players.count)
+            
+            let player = players[indexPath.row]
+            print("Player: \(player)")
+            
+            self.players.remove(at: indexPath.row)
+     
+            print(players.count)
+            CoreDataHelper.delete(player: player)
+            
+//            tableView.deleteRows(at: [indexPath], with: .fade)
+           tableView.reloadData()
+           
+            
         }
     }
 
@@ -123,6 +135,25 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             //add players to new group
             player.game = newGame
         }
+        
+        if players.isEmpty {
+            let alert = UIAlertController(title: "No Players?", message: "Please Enter Players", preferredStyle: .alert)
+            
+            let okButton = UIAlertAction(title: "Ok", style: .default, handler: nil)
+            alert.addAction(okButton)
+            
+            self.present(alert, animated: true)
+        }
+        
+//        if newPlayerTextField.text = "" {
+//
+//
+//            let cancelButton = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+//            alertGameTitle.addAction(cancelButton)
+//
+//            self.present(alertGameTitle, animated: true)
+//
+//        }
         
         
         //TODO: prompt user to add a group?

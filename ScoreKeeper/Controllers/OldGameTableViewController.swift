@@ -72,7 +72,12 @@ class OldGameTableViewController: UITableViewController, UITextFieldDelegate{
         let savedGame = recievedSavedGames[indexPath.row]
         
         cell.oldGameNameLabel.text = savedGame.name
+        
         cell.dateLabel.text = savedGame.date?.convertToString()
+        
+        if cell.oldGameNameLabel.text == "" as String?{
+            cell.oldGameNameLabel.text = "No Name"
+        }
         
             //recievedSavedGames[indexPath.row].name
     

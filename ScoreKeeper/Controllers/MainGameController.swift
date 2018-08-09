@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import AVFoundation
+import AudioToolbox
 
 class MainGameController: UITableViewController {
 
@@ -112,6 +114,7 @@ class MainGameController: UITableViewController {
         print(tiedPlayers)
         //transfering winningPlayer to EndOfGameViewController to be displayed
         if segue.identifier == "endGame"{
+            AudioServicesPlayAlertSound(SystemSoundID(1327))
             if let destination = segue.destination as? EndOfGameViewController{
                 destination.playerWithLargestScore = playerName
                 
