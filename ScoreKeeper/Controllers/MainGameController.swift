@@ -93,15 +93,15 @@ class MainGameController: UIViewController, UITableViewDataSource, UITableViewDe
         let players = currentGame.players
         
         for index in 0..<players.count{
-            let cell = playersInGame.cellForRow(at: IndexPath(row: index, section: 0)) as! TableViewCell
+            let cell = playersInGame?.cellForRow(at: IndexPath(row: index, section: 0)) as? TableViewCell
             
-            let score = Int(cell.scoreTextField.text ?? "0")!
+            let score = Int(cell?.scoreTextField.text ?? "0")!
          
     
             
             if score > largestScore{
                 largestScore = score
-                playerName = ((cell.textLabel?.text)! + " is the winner!")
+                playerName = ((cell?.textLabel?.text)! + " is the winner!")
             }
 //            else if score < largestScore{
 //                smallestScore = score

@@ -199,11 +199,18 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         if segue.identifier == "createGame" {
             if let destination = segue.destination as? MainGameController{
 //                destination.playersInGame = sender as? UITableView
-                
                 let game = CoreDataHelper.newGame()
-                game.date = Date()
                 
-                destination.currentGame = sender as! Game
+                game.date = Date()
+                for player in players {
+                    
+                    //add players to new group
+                    
+                    player.game = game
+            
+                }
+                destination.currentGame = game
+               
                 
             }
         }
