@@ -8,17 +8,21 @@
 
 import UIKit
 
-class PlayerGroupsTableViewController: UITableViewController {
+class PlayerGroupsTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var groups = [PlayerGroup]()
     var row = 0
 
+    @IBOutlet weak var tableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         groups = CoreDataHelper.retrieveGroups()
         print(groups)
         print(groups.count)
         navigationItem.title = "Player Groups"
+        tableView.delegate = self
+        tableView.dataSource = self
         // Get players from group like this:
         
 //         let players = groups[0].playerGroup
@@ -37,18 +41,19 @@ class PlayerGroupsTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
+     func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return groups.count
     }
 
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        tableView.rowHeight = 80
         let cell = tableView.dequeueReusableCell(withIdentifier: "playerGroup", for: indexPath) as! PlayerGroupTableViewCell
 //        let group = groups[indexPath.row]
         
@@ -63,7 +68,7 @@ class PlayerGroupsTableViewController: UITableViewController {
 
     
     // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
         return true
     }
@@ -71,7 +76,7 @@ class PlayerGroupsTableViewController: UITableViewController {
 
     
     // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             CoreDataHelper.delete(group: groups[indexPath.row])
             groups.remove(at: indexPath.row)
@@ -79,7 +84,7 @@ class PlayerGroupsTableViewController: UITableViewController {
         }
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 //        row = indexPath.row
 //        let playerGroup = groups[indexPath.row]
         

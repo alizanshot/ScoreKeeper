@@ -10,7 +10,10 @@ import UIKit
 import AVFoundation
 import AudioToolbox
 
-class MainGameController: UITableViewController {
+class MainGameController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    
+    @IBOutlet weak var tableView: UITableView!
+    
 
     @IBOutlet var playersInGame: UITableView!
     var playerName = ""
@@ -27,6 +30,8 @@ class MainGameController: UITableViewController {
         // Uncomment the following line to preserve selection between presentations
 //         self.clearsSelectionOnViewWillAppear = false
         navigationItem.title = "Game Name"
+        tableView.dataSource = self
+        tableView.delegate = self
 
         hideKeyboardWhenTappedAround()
         
@@ -41,18 +46,18 @@ class MainGameController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
+     func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return currentGame.players.count
     }
 
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         tableView.rowHeight = 90
         let cell = tableView.dequeueReusableCell(withIdentifier: "playerInGameCell", for: indexPath)
         
@@ -65,7 +70,7 @@ class MainGameController: UITableViewController {
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let playerToRemove = currentGame.players[indexPath.row]
             CoreDataHelper.delete(player: playerToRemove)
@@ -114,7 +119,7 @@ class MainGameController: UITableViewController {
         print(tiedPlayers)
         //transfering winningPlayer to EndOfGameViewController to be displayed
         if segue.identifier == "endGame"{
-            AudioServicesPlayAlertSound(SystemSoundID(1327))
+            AudioServicesPlayAlertSound(SystemSoundID(1335))
             if let destination = segue.destination as? EndOfGameViewController{
                 destination.playerWithLargestScore = playerName
                 

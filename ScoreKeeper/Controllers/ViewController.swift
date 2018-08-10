@@ -10,11 +10,12 @@ import UIKit
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate {
 
+    @IBOutlet weak var createButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var newPlayerTextField: UITextField!
-    @IBOutlet weak var newGameLabel: UILabel!
-    @IBOutlet weak var oldGameLabel: UILabel!
-    @IBOutlet weak var playerGroupLabel: UILabel!
+    
+    @IBOutlet weak var newGameButton: UIButton!
+    @IBOutlet weak var historyButton: UIButton!
     
     var players = [Player](){
         didSet {
@@ -24,6 +25,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        createButton?.layer.cornerRadius = 15
+        createButton?.layer.masksToBounds = true
        
         //allows me to add textfield info to tableview 
         newPlayerTextField?.delegate = self
@@ -34,12 +38,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
        // hideKeyboardWhenTappedAround()
         
         tableView?.allowsSelection = false
-        newGameLabel?.layer.masksToBounds = true
-        newGameLabel?.layer.cornerRadius = 10
-        oldGameLabel?.layer.masksToBounds = true
-        oldGameLabel?.layer.cornerRadius = 10
-        playerGroupLabel?.layer.masksToBounds = true
-        playerGroupLabel?.layer.cornerRadius = 10
+        
+        newGameButton?.layer.cornerRadius = 15
+        newGameButton?.clipsToBounds = true
+        historyButton?.layer.cornerRadius = 15
+        historyButton?.clipsToBounds = true
         
         
     
@@ -102,7 +105,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "newPlayerCell", for: indexPath)
-        cell.textLabel?.text = players[indexPath.row].name as? String
+        cell.textLabel?.text = players[indexPath.row].name
         //makes it so that cell isn't highlited when selected
         cell.selectionStyle = UITableViewCellSelectionStyle.none
         
@@ -190,12 +193,17 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         alertCreateAGroup.addAction(yesButton)
         
         self.present(alertCreateAGroup, animated: true)
+        //performSegue(withIdentifier: "createGame", sender: Any?)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "createGame" {
             if let destination = segue.destination as? MainGameController{
 //                destination.playersInGame = sender as? UITableView
+                
+                let game = CoreDataHelper.newGame()
+                game.date = Date()
+                
                 destination.currentGame = sender as! Game
                 
             }
