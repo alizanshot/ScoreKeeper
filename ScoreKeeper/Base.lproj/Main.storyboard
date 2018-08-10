@@ -163,7 +163,7 @@
                                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="94N-tS-Cj7">
                                             <color key="tintColor" red="1" green="0.9729795752" blue="0.97392138669999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <connections>
-                                                <segue destination="xQe-qF-bga" kind="show" id="KdG-Y5-iAs"/>
+                                                <segue destination="OJX-9Z-K6F" kind="show" id="OWE-rj-DeB"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -260,7 +260,7 @@
                                     <navigationItem title="Add Players" id="cEM-9C-6B0">
                                         <barButtonItem key="leftBarButtonItem" title="Back" id="bBK-rV-9UT">
                                             <connections>
-                                                <segue destination="xQe-qF-bga" kind="show" id="Dot-aA-sAc"/>
+                                                <segue destination="W2t-vM-o8X" kind="show" id="Bjw-1u-0Pj"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -362,21 +362,23 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xE8-zI-Fxm">
+                                <rect key="frame" x="152" y="595" width="71" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.20270659290000001" green="1" blue="0.99866002669999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="End Game"/>
+                                <connections>
+                                    <segue destination="hLb-1g-I6X" kind="show" identifier="endGame" id="ArW-Lq-lve"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="796-cJ-OKp"/>
                     </view>
-                    <toolbarItems>
-                        <barButtonItem style="plain" systemItem="flexibleSpace" id="WSD-v6-6Zk"/>
-                        <barButtonItem title="End Game" id="Fkb-a6-xQF">
-                            <connections>
-                                <segue destination="hLb-1g-I6X" kind="show" id="KBd-GU-QBH"/>
-                            </connections>
-                        </barButtonItem>
-                    </toolbarItems>
+                    <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="tableView" destination="MZX-o3-U68" id="FnL-kq-iR5"/>
+                        <outlet property="playersInGameTableView" destination="MZX-o3-U68" id="3IO-mw-Ghg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="94r-4S-RnY" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -419,7 +421,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H2G-zq-sPP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1663" y="1486"/>
+            <point key="canvasLocation" x="966" y="2182"/>
         </scene>
         <!--Old Game Table View Controller-->
         <scene sceneID="SkW-OC-neW">
@@ -564,7 +566,9 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="4rb-Im-VUy"/>
-        <segue reference="hG5-OJ-DDY"/>
-        <segue reference="U7z-5q-Ybm"/>
+        <segue reference="Ghy-YN-fwm"/>
+        <segue reference="Bjw-1u-0Pj"/>
+        <segue reference="OWE-rj-DeB"/>
+        <segue reference="460-WK-R5M"/>
     </inferredMetricsTieBreakers>
 </document>

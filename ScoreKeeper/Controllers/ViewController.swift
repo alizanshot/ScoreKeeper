@@ -178,7 +178,13 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 //create the group
                 let newGroup = CoreDataHelper.newGroup(for: newGame)
                 newGroup.title = alertGroupTitle.textFields!.first!.text!
-                
+                for player in self.players {
+                    
+                    //add players to new group
+                    
+                    player.group = newGroup
+                    
+                }
                 CoreDataHelper.save()
                 self.performSegue(withIdentifier: "createGame", sender: newGame)
             })

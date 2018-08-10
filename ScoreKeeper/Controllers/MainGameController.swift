@@ -12,10 +12,9 @@ import AudioToolbox
 
 class MainGameController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    @IBOutlet weak var tableView: UITableView!
     
-
-    @IBOutlet var playersInGame: UITableView!
+    @IBOutlet weak var playersInGameTableView: UITableView!
+    
     var playerName = ""
     var losingPlayer = ""
     var tiedPlayers: [String] = []
@@ -30,8 +29,8 @@ class MainGameController: UIViewController, UITableViewDataSource, UITableViewDe
         // Uncomment the following line to preserve selection between presentations
 //         self.clearsSelectionOnViewWillAppear = false
         navigationItem.title = "Game Name"
-        tableView.dataSource = self
-        tableView.delegate = self
+        playersInGameTableView.dataSource = self
+        playersInGameTableView.delegate = self
 
         hideKeyboardWhenTappedAround()
         
@@ -93,15 +92,15 @@ class MainGameController: UIViewController, UITableViewDataSource, UITableViewDe
         let players = currentGame.players
         
         for index in 0..<players.count{
-            let cell = playersInGame?.cellForRow(at: IndexPath(row: index, section: 0)) as? TableViewCell
+            let cell = playersInGameTableView.cellForRow(at: IndexPath(row: index, section: 0)) as! TableViewCell
             
-            let score = Int(cell?.scoreTextField.text ?? "0")!
+            let score = Int(cell.scoreTextField.text ?? "0")!
          
     
             
             if score > largestScore{
                 largestScore = score
-                playerName = ((cell?.textLabel?.text)! + " is the winner!")
+                playerName = ((cell.textLabel?.text)! + " is the winner!")
             }
 //            else if score < largestScore{
 //                smallestScore = score
@@ -109,9 +108,9 @@ class MainGameController: UIViewController, UITableViewDataSource, UITableViewDe
 //                losingPlayer = ((cell.textLabel?.text)! + " is the loser")
 //
 //            }
-            else if score == largestScore{
-                playerName = "There is a tie!"
-            }
+//            else if score == largestScore{
+//                playerName = "There is a tie!"
+//            }
            
             
             
