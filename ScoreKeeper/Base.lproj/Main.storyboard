@@ -43,6 +43,7 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EUb-TY-ODh">
                                 <rect key="frame" x="120" y="279" width="136" height="62"/>
 
+
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.035294117649999998" green="0.31372549020000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" weight="black" pointSize="18"/>
@@ -66,6 +67,8 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pp2-PD-Tfs">
                                 <rect key="frame" x="92" y="400" width="182" height="62"/>
 
+=======
+>>>>>>> e96bbad1437ff8a439664b0cc8a20fdfa894a336
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.035294117649999998" green="0.31372549020000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" weight="black" pointSize="18"/>
@@ -75,10 +78,14 @@
                                 </state>
                                 <connections>
 
+
                                     <segue destination="mmQ-C3-YT2" kind="show" id="uTT-92-W2L"/>
 
                                     <segue destination="oIR-N1-MNK" kind="show" id="Q1A-i8-DbA"/>
 
+=======
+                                    <segue destination="oIR-N1-MNK" kind="show" id="Q1A-i8-DbA"/>
+>>>>>>> e96bbad1437ff8a439664b0cc8a20fdfa894a336
                                 </connections>
                             </button>
                         </subviews>
@@ -87,6 +94,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Home" id="xxI-Xp-UCu"/>
                     <connections>
+
 
 
 
@@ -100,6 +108,10 @@
                         <outlet property="historyButton" destination="EUb-TY-ODh" id="UX1-Gb-9yy"/>
                         <outlet property="newGameButton" destination="oG7-0Q-M76" id="foV-3w-aU8"/>
 
+=======
+                        <outlet property="historyButton" destination="EUb-TY-ODh" id="UX1-Gb-9yy"/>
+                        <outlet property="newGameButton" destination="oG7-0Q-M76" id="foV-3w-aU8"/>
+>>>>>>> e96bbad1437ff8a439664b0cc8a20fdfa894a336
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yxM-bg-KUB" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -107,6 +119,7 @@
             <point key="canvasLocation" x="-1567" y="662"/>
         </scene>
         <!--Player Groups Table View Controller-->
+
 
         <scene sceneID="NdK-Zu-1yu">
             <objects>
@@ -124,6 +137,12 @@
                     <view key="view" contentMode="scaleToFill" id="jcV-4w-HxB">
                         
                         
+=======
+        <scene sceneID="NdK-Zu-1yu">
+            <objects>
+                <viewController id="OJX-9Z-K6F" customClass="PlayerGroupsTableViewController" customModule="ScoreKeeper" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="jcV-4w-HxB">
+>>>>>>> e96bbad1437ff8a439664b0cc8a20fdfa894a336
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -174,6 +193,7 @@
                             </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+
          <viewLayoutGuide key="safeArea" id="87p-VB-fU0"/>
                     </view>
                         <prototypes>
@@ -211,6 +231,10 @@
                         <viewLayoutGuide key="safeArea" id="87p-VB-fU0"/>
                     </view>
 
+=======
+                        <viewLayoutGuide key="safeArea" id="87p-VB-fU0"/>
+                    </view>
+>>>>>>> e96bbad1437ff8a439664b0cc8a20fdfa894a336
                     <connections>
                         <outlet property="tableView" destination="XSc-IT-dDo" id="7jS-yX-HtC"/>
                         <segue destination="kmO-x6-nI3" kind="show" identifier="toMainGame" id="0em-fk-L0k"/>
@@ -219,9 +243,12 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7NE-qr-v7v" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
 
+
             <point key="canvasLocation" x="-2705" y="1417"/>
 
             <point key="canvasLocation" x="975.20000000000005" y="-509.59520239880067"/>
+=======
+>>>>>>> e96bbad1437ff8a439664b0cc8a20fdfa894a336
             <point key="canvasLocation" x="-2705" y="1417"/>
         </scene>
         <!--Start New Game Controller-->
@@ -273,10 +300,13 @@
                                     <action selector="startGameButtonTapped:" destination="W2t-vM-o8X" eventType="touchUpInside" id="gH8-HC-ngg"/>
                                     <segue destination="wzw-hR-cM6" kind="show" id="Ghy-YN-fwm"/>
 
+
                                     <segue destination="wzw-hR-cM6" kind="show" identifier="startGame" id="h6D-cM-0dN"/>
 
                                     <segue destination="wzw-hR-cM6" kind="show" id="Ghy-YN-fwm"/>
 
+=======
+>>>>>>> e96bbad1437ff8a439664b0cc8a20fdfa894a336
                                 </connections>
                             </button>
                         </subviews>
@@ -440,6 +470,7 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+<<<<<<< HEAD
 
                         <viewLayoutGuide key="safeArea" id="796-cJ-OKp"/>
                     </view>
@@ -495,6 +526,10 @@
                         <viewLayoutGuide key="safeArea" id="796-cJ-OKp"/>
                     </view>
 
+=======
+                        <viewLayoutGuide key="safeArea" id="796-cJ-OKp"/>
+                    </view>
+>>>>>>> e96bbad1437ff8a439664b0cc8a20fdfa894a336
                     <toolbarItems>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="WSD-v6-6Zk"/>
                         <barButtonItem title="End Game" id="Fkb-a6-xQF"/>
@@ -688,6 +723,7 @@
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
+<<<<<<< HEAD
 
         <segue reference="4rb-Im-VUy"/>
         <segue reference="Dot-aA-sAc"/>
@@ -699,5 +735,9 @@
         <segue reference="4rb-Im-VUy"/>
         <segue reference="Dot-aA-sAc"/>
 
+=======
+        <segue reference="4rb-Im-VUy"/>
+        <segue reference="Dot-aA-sAc"/>
+>>>>>>> e96bbad1437ff8a439664b0cc8a20fdfa894a336
     </inferredMetricsTieBreakers>
 </document>
