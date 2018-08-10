@@ -9,7 +9,10 @@
 import UIKit
 
 
-class OldGameTableViewController: UITableViewController, UITextFieldDelegate{
+class OldGameTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    @IBOutlet weak var tableView: UITableView!
+    
     
     var recievedSavedGames = [Game]() {
         didSet {
@@ -24,25 +27,17 @@ class OldGameTableViewController: UITableViewController, UITextFieldDelegate{
 //        }
 //    }
     
-//    override func viewWillAppear(_ animated: Bool) {
-//        if recievedSavedGames.isEmpty{
-//            let newGame = CoreDataHelper.newGame()
-//            newGame.name = "No Name"
-//            newGame.date = Date()
-//
-//            CoreDataHelper.save()
-//        }
-//
-//    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         recievedSavedGames = CoreDataHelper.retrieveGames()
 //        tableView.reloadData()
         print("The game is called \(recievedSavedGames)")
         
+        tableView.delegate = self
+        tableView.dataSource = self
+        
         // Uncomment the following line to preserve selection between presentations
-         self.clearsSelectionOnViewWillAppear = false
+//         self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
@@ -63,21 +58,23 @@ class OldGameTableViewController: UITableViewController, UITextFieldDelegate{
     
 
     // MARK: - Table view data source
+    
+    
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
-        
+
     }
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return recievedSavedGames.count
         
     }
 
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         tableView.rowHeight = 80
         let cell = tableView.dequeueReusableCell(withIdentifier: "oldGame", for: indexPath) as! OldGameTableViewCell
         let savedGame = recievedSavedGames[indexPath.row]
@@ -116,7 +113,7 @@ class OldGameTableViewController: UITableViewController, UITextFieldDelegate{
 
     
     // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             CoreDataHelper.delete(game: recievedSavedGames[indexPath.row])
            // CoreDataHelper.delete(game: recievedSavedGames)
