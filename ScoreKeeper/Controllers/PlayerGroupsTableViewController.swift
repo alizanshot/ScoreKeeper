@@ -33,6 +33,10 @@ class PlayerGroupsTableViewController: UIViewController, UITableViewDelegate, UI
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
+    
+    @IBAction func unwindToPlayerGroups(_ segue: UIStoryboardSegue) {
+        
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

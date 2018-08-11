@@ -10,7 +10,7 @@ import UIKit
 import AVFoundation
 import AudioToolbox
 
-class StartNewGameController: UIViewController {
+class StartNewGameController: UIViewController, UITextFieldDelegate {
     
     var savedGames: [String] = []
     
@@ -23,13 +23,26 @@ class StartNewGameController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         hideKeyboardWhenTappedAround()
-        
+        nameOfGameTextField.delegate = self
         startGameButton.layer.masksToBounds = true
         startGameButton.layer.cornerRadius = 15
         
         
         
         // Do any additional setup after loading the view.
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let maxLength = 75
+        let currentString: NSString = textField.text! as NSString
+        let newString: NSString =
+            currentString.replacingCharacters(in: range, with: string) as NSString
+        return newString.length <= maxLength
+    }
+    
+    
+    @IBAction func unwindToStartGame(_ segue: UIStoryboardSegue) {
+        
     }
     
     
@@ -50,28 +63,28 @@ class StartNewGameController: UIViewController {
             
             let alertGameTitle = UIAlertController(title: "No Name?", message: "Please enter a name for this game.", preferredStyle: .alert)
             
-            alertGameTitle.addTextField(configurationHandler: { (textField) in
-                textField.placeholder = "Game Title"
+//            alertGameTitle.addTextField(configurationHandler: { (textField) in
+//                textField.placeholder = "Game Title"
+////                let newGame = CoreDataHelper.newGame()
+////                newGame.name = textField.text
+////                newGame.date = Date()
+////
+////                CoreDataHelper.saveGame()
+//            })
+            
+//
+//            let okButton = UIAlertAction(title: "Ok", style: .default, handler: { (_) in
+//
 //                let newGame = CoreDataHelper.newGame()
-//                newGame.name = textField.text
+//                newGame.name = alertGameTitle.textFields!.first!.text!
 //                newGame.date = Date()
-//                
-//                CoreDataHelper.saveGame()
-            })
+//
+//                CoreDataHelper.save()
+//
+//            })
             
-            
-            let okButton = UIAlertAction(title: "Ok", style: .default, handler: { (_) in
-                
-                let newGame = CoreDataHelper.newGame()
-                newGame.name = alertGameTitle.textFields!.first!.text!
-                newGame.date = Date()
-                
-                CoreDataHelper.save()
-                
-            })
-            
-            alertGameTitle.addAction(okButton)
-            self.present(alertGameTitle, animated: true, completion: nil)
+//            alertGameTitle.addAction(okButton)
+//            self.present(alertGameTitle, animated: true, completion: nil)
             
 //            let okButton = UIAlertAction(title: "Ok", style: .default, handler: nil)
 //            alertGameTitle.addAction(okButton)

@@ -16,12 +16,13 @@ class MainGameController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet weak var playersInGameTableView: UITableView!
     
     var playerName = ""
+    
     var losingPlayer = ""
     var tiedPlayers: [String] = []
     
     var currentGame: Game!
     
-
+    var newOldPlayer = CoreDataHelper.newPlayer()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -92,16 +93,17 @@ class MainGameController: UIViewController, UITableViewDataSource, UITableViewDe
         let players = currentGame.players
         
         for index in 0..<players.count{
-            let cell = playersInGameTableView.cellForRow(at: IndexPath(row: index, section: 0)) as! TableViewCell
+            let cell = playersInGameTableView?.cellForRow(at: IndexPath(row: index, section: 0)) as! TableViewCell
             
             let score = Int(cell.scoreTextField.text ?? "0")!
          
-    
             
             if score > largestScore{
                 largestScore = score
                 playerName = ((cell.textLabel?.text)! + " is the winner!")
+               // oldWinner = ((cell.textLabel?.text)! + " won this game!")
             }
+        
 //            else if score < largestScore{
 //                smallestScore = score
 //
@@ -123,6 +125,10 @@ class MainGameController: UIViewController, UITableViewDataSource, UITableViewDe
                 destination.playerWithLargestScore = playerName
                 
             }
+//            else if let destination2 = segue.destination as? OldGameTableViewController{
+//                oldWinner = newOldPlayer
+//                destination2.oldWinner = oldWinner
+//            }
 //            else if let destination2 = segue.destination as? EndOfGameViewController{
 //                destination2.playerWithSmallestScrore = losingPlayer
 //            }
@@ -130,7 +136,7 @@ class MainGameController: UIViewController, UITableViewDataSource, UITableViewDe
         
 
         // Print the high scoring player here
-        print(playerName)
+        
         //print(losingPlayer)
         
         
@@ -140,7 +146,6 @@ class MainGameController: UIViewController, UITableViewDataSource, UITableViewDe
     
 
 }
-
 
 
 

@@ -19,6 +19,11 @@ class OldGameTableViewController: UIViewController, UITableViewDelegate, UITable
             tableView.reloadData()
         }
     }
+    var oldWinner: String?
+    
+
+    
+    
     
     
     
@@ -29,9 +34,12 @@ class OldGameTableViewController: UIViewController, UITableViewDelegate, UITable
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView?.allowsSelection = false
         recievedSavedGames = CoreDataHelper.retrieveGames()
-//        tableView.reloadData()
+        tableView.reloadData()
         print("The game is called \(recievedSavedGames)")
+        
+        
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -79,13 +87,20 @@ class OldGameTableViewController: UIViewController, UITableViewDelegate, UITable
         let cell = tableView.dequeueReusableCell(withIdentifier: "oldGame", for: indexPath) as! OldGameTableViewCell
         let savedGame = recievedSavedGames[indexPath.row]
         
+        
         cell.oldGameNameLabel.text = savedGame.name
         
         cell.dateLabel.text = savedGame.date?.convertToString()
-        
-        if cell.oldGameNameLabel.text == "" as String?{
-            cell.oldGameNameLabel.text = "No Name"
+
+        if cell.oldGameNameLabel.text == nil{
+           // cell.oldGameNameLabel.text = "No Name"
+            CoreDataHelper.delete(game: recievedSavedGames[indexPath.row])
+            recievedSavedGames.remove(at: indexPath.row)
         }
+        
+        //recievedSavedGames.sort(by: {($0.date?.timeIntervalSinceNow)! < ($1.date?.timeIntervalSinceNow)!})
+        
+
         
             //recievedSavedGames[indexPath.row].name
     

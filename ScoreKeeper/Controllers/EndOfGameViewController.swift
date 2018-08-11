@@ -13,6 +13,7 @@ class EndOfGameViewController:  UIViewController {
     var playerWithLargestScore: String?
     var secondPlacePlayer: String?
     var playerWithSmallestScrore: String?
+    @IBOutlet weak var goHomeButtonLabel: UIButton!
     
     var player: Player?
     
@@ -23,12 +24,17 @@ class EndOfGameViewController:  UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        goHomeButtonLabel?.layer.cornerRadius = 15
+        goHomeButtonLabel?.layer.masksToBounds = true
+        
 
         //checking that value is not nil and also storing the winningPlayer in a variable to wait for this view controller to load, and then after it loads i use the playerWithLargestScore variable in the MainGameController and pass it into this controller. Basically I couldn't directly pass the data into the winningPlayer label because it hadn't loaded yet
         if let text = playerWithLargestScore {
             winningPlayer?.text = text
             
-        } else {
+        }
+        
+        else {
             winningPlayer?.text = "0"
         }
         
