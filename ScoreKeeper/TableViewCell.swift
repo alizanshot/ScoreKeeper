@@ -29,7 +29,7 @@ class TableViewCell: UITableViewCell {
     }
     
     @IBAction func addButtonTapped(_ sender: Any) {
-        AudioServicesPlayAlertSound(SystemSoundID(1107))
+
         guard var score = Int(scoreTextField.text!) else {
             scoreTextField.text = "1"
             return
@@ -41,7 +41,7 @@ class TableViewCell: UITableViewCell {
     
     
     @IBAction func subtractButtonTapped(_ sender: Any) {
-        AudioServicesPlayAlertSound(SystemSoundID(1071)) 
+       
         guard var score = Int(scoreTextField.text!) else {
             scoreTextField.text = "-1"
             return
