@@ -21,7 +21,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oG7-0Q-M76">
-                                <rect key="frame" x="94" y="182" width="187.5" height="55"/>
+                                <rect key="frame" x="93.5" y="182" width="188" height="55"/>
                                 <color key="backgroundColor" red="1" green="0.1510597182" blue="0.09031308381" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" weight="black" pointSize="18"/>
                                 <inset key="contentEdgeInsets" minX="21" minY="16" maxX="16" maxY="17"/>
@@ -40,7 +40,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EUb-TY-ODh">
-                                <rect key="frame" x="94" y="279" width="187.5" height="55"/>
+                                <rect key="frame" x="93.5" y="279" width="188" height="55"/>
                                 <color key="backgroundColor" red="0.035294117649999998" green="0.31372549020000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" weight="black" pointSize="18"/>
                                 <inset key="contentEdgeInsets" minX="21" minY="16" maxX="16" maxY="17"/>
@@ -187,7 +187,7 @@
                                 </items>
                             </navigationBar>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qGs-KC-7y2">
-                                <rect key="frame" x="94" y="202" width="187.5" height="75"/>
+                                <rect key="frame" x="93.5" y="202" width="188" height="75"/>
                                 <color key="backgroundColor" red="1" green="0.27058823529411763" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" weight="black" pointSize="18"/>
                                 <inset key="contentEdgeInsets" minX="27" minY="26" maxX="27" maxY="27"/>
@@ -282,7 +282,7 @@
                                 </items>
                             </navigationBar>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kRW-h9-clu">
-                                <rect key="frame" x="94" y="582" width="187.5" height="39"/>
+                                <rect key="frame" x="93.5" y="582" width="188" height="39"/>
                                 <color key="backgroundColor" red="0.89811766120598868" green="0.92689233987578667" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="39" id="l8p-8X-xO7"/>
@@ -361,7 +361,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="VQX-gv-Osx">
-                                                    <rect key="frame" x="156" y="0.0" width="218.5" height="95.5"/>
+                                                    <rect key="frame" x="156.5" y="0.0" width="218.5" height="95.5"/>
                                                     <subviews>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i1S-0x-3zA">
                                                             <rect key="frame" x="0.0" y="1" width="60" height="94"/>
