@@ -45,71 +45,69 @@ class StartNewGameController: UIViewController, UITextFieldDelegate {
         
     }
     
-    
-    @IBAction func startGameButtonTapped(_ sender: Any) {
-        //savedGames.append(nameOfGameTextField.text!)
-       
-        
-        if nameOfGameTextField.text != ""{
-            AudioServicesPlayAlertSound(SystemSoundID(1326))
-            let newGame = CoreDataHelper.newGame()
-            newGame.name = nameOfGameTextField.text!
-            
-            newGame.date = Date()
-            
-            CoreDataHelper.saveGame()
-        }
-        else if savedGames.isEmpty{
-            
-            let alertGameTitle = UIAlertController(title: "No Name?", message: "Please enter a name for this game.", preferredStyle: .alert)
-            
-//            alertGameTitle.addTextField(configurationHandler: { (textField) in
-//                textField.placeholder = "Game Title"
-////                let newGame = CoreDataHelper.newGame()
-////                newGame.name = textField.text
-////                newGame.date = Date()
-////
-////                CoreDataHelper.saveGame()
-//            })
-            
-//
-//            let okButton = UIAlertAction(title: "Ok", style: .default, handler: { (_) in
-//
-//                let newGame = CoreDataHelper.newGame()
-//                newGame.name = alertGameTitle.textFields!.first!.text!
-//                newGame.date = Date()
-//
-//                CoreDataHelper.save()
-//
-//            })
-            
-//            alertGameTitle.addAction(okButton)
-//            self.present(alertGameTitle, animated: true, completion: nil)
-            
-//            let okButton = UIAlertAction(title: "Ok", style: .default, handler: nil)
-//            alertGameTitle.addAction(okButton)
-//
-//            self.present(alertGameTitle, animated: true)
-//
+//    @IBAction func startGameButtonTapped(_ sender: Any) {
+//        //savedGames.append(nameOfGameTextField.text!)
+//        
+//        
+//        if nameOfGameTextField.text != ""{
 //            let newGame = CoreDataHelper.newGame()
 //            newGame.name = nameOfGameTextField.text!
-//
+//            
 //            newGame.date = Date()
-//
-//            CoreDataHelper.saveGame()
-            
-        }
-        
-
-        
+//            
+//            CoreDataHelper.save()
+//        }
+//        else if savedGames.isEmpty{
+//            
+//            
+//            
+//            //            alertGameTitle.addTextField(configurationHandler: { (textField) in
+//            //                textField.placeholder = "Game Title"
+//            ////                let newGame = CoreDataHelper.newGame()
+//            ////                newGame.name = textField.text
+//            ////                newGame.date = Date()
+//            ////
+//            ////                CoreDataHelper.saveGame()
+//            //            })
+//            
+//            //
+//            //            let okButton = UIAlertAction(title: "Ok", style: .default, handler: { (_) in
+//            //
+//            //                let newGame = CoreDataHelper.newGame()
+//            //                newGame.name = alertGameTitle.textFields!.first!.text!
+//            //                newGame.date = Date()
+//            //
+//            //                CoreDataHelper.save()
+//            //
+//            //            })
+//            
+//            //            alertGameTitle.addAction(okButton)
+//            //            self.present(alertGameTitle, animated: true, completion: nil)
+//            
+//            //            let okButton = UIAlertAction(title: "Ok", style: .default, handler: nil)
+//            //            alertGameTitle.addAction(okButton)
+//            //
+//            //            self.present(alertGameTitle, animated: true)
+//            //
+//            //            let newGame = CoreDataHelper.newGame()
+//            //            newGame.name = nameOfGameTextField.text!
+//            //
+//            //            newGame.date = Date()
+//            //
+//            //            CoreDataHelper.saveGame()
+//            
+//        }
+//        
+//        
+//        
+//        
+//        //print(savedGames)
+//        
+//        
+//    }
     
-        //print(savedGames)
     
-
-    }
-
     
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

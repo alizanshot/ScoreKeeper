@@ -13,62 +13,22 @@ class OldGameTableViewController: UIViewController, UITableViewDelegate, UITable
     
     @IBOutlet weak var tableView: UITableView!
     
-    
-    var recievedSavedGames = [Game]() {
-        didSet {
-            tableView.reloadData()
-        }
-    }
-    var oldWinner: String?
-    
-
-    
-    
-    
-    
-    
-//        didSet {
-//            tableView.reloadData()
-//        }
-//    }
+    var recievedSavedGames = [Game]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView?.allowsSelection = false
         recievedSavedGames = CoreDataHelper.retrieveGames()
         tableView.reloadData()
-        print("The game is called \(recievedSavedGames)")
-        
-        
-        
         tableView.delegate = self
         tableView.dataSource = self
-        
-        // Uncomment the following line to preserve selection between presentations
-//         self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
-        
     }
     
-    
-    
-    
-    
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-        
     }
     
-    
-
-    // MARK: - Table view data source
-    
-    
-
     func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
@@ -78,7 +38,6 @@ class OldGameTableViewController: UIViewController, UITableViewDelegate, UITable
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return recievedSavedGames.count
-        
     }
 
     
@@ -88,32 +47,16 @@ class OldGameTableViewController: UIViewController, UITableViewDelegate, UITable
         let savedGame = recievedSavedGames[indexPath.row]
         
         
-        cell.oldGameNameLabel.text = savedGame.name
-        
+        cell.oldWinner.text = savedGame.winner
         cell.dateLabel.text = savedGame.date?.convertToString()
 
-        if cell.oldGameNameLabel.text == nil{
-           // cell.oldGameNameLabel.text = "No Name"
-            CoreDataHelper.delete(game: recievedSavedGames[indexPath.row])
-            recievedSavedGames.remove(at: indexPath.row)
-        }
         
         //recievedSavedGames.sort(by: {($0.date?.timeIntervalSinceNow)! < ($1.date?.timeIntervalSinceNow)!})
-        
-
-        
-            //recievedSavedGames[indexPath.row].name
-    
-//        cell.dateLabel.text =
-//        let date = OldGameTableViewCell()
-//        date.creationDate = Date()
-        
-       // cell.dateLabel.text = recievedSavedGames[indexPath.row].date
-    
-    
-        // cell.textLabel?.text  = players[indexPath.row].name
         return cell
-        
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "Game                                                        Winner"
     }
     
 
@@ -131,8 +74,8 @@ class OldGameTableViewController: UIViewController, UITableViewDelegate, UITable
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             CoreDataHelper.delete(game: recievedSavedGames[indexPath.row])
-           // CoreDataHelper.delete(game: recievedSavedGames)
-            recievedSavedGames.remove(at: indexPath.row)
+            recievedSavedGames = CoreDataHelper.retrieveGames()
+            tableView.reloadData()
             
         }
     }

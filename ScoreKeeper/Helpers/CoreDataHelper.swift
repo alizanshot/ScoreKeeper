@@ -32,29 +32,17 @@ struct CoreDataHelper {
     static func newGame(from group: PlayerGroup) -> Game {
         let game = NSEntityDescription.insertNewObject(forEntityName: "Game", into: context) as! Game
         
-        //copies all of the players from the given group and adds them to the new game
-        for aPlayer in group.players {
-            let copiedPlayer = CoreDataHelper.newPlayer()
-            copiedPlayer.name = aPlayer.name
-            copiedPlayer.game = game
-        }
+        group.games?.adding(game)
         
         return game
-    }
-    
-    static func saveGame() {
-        do {
-            try context.save()
-        } catch let error {
-            print("Could not save \(error.localizedDescription)")
-        }
     }
     
     static func delete(game: Game) {
         context.delete(game)
         
-        saveGame() 
+        save()
     }
+    
     
     static func retrieveGames() -> [Game] {
         do {
@@ -73,9 +61,10 @@ struct CoreDataHelper {
     //Player Entity
     static func newPlayer() -> Player {
         let player = NSEntityDescription.insertNewObject(forEntityName: "Player", into: context) as! Player
-        
+       
         return player
     }
+    
     
     static func save() {
         do {
@@ -107,44 +96,50 @@ struct CoreDataHelper {
     }
     
     
-    
     //playeGroup Entity
     static func newGroup() -> PlayerGroup {
         let playerGroup = NSEntityDescription.insertNewObject(forEntityName: "PlayerGroup", into: context) as! PlayerGroup
-        
-        return playerGroup
-    }
     
-    static func newGroup(for game: Game) -> PlayerGroup {
-        let playerGroup = NSEntityDescription.insertNewObject(forEntityName: "PlayerGroup", into: context) as! PlayerGroup
-        
-        //add all the players from this game to the group
-        for aPlayer in game.players {
-            aPlayer.group = playerGroup
-        }
-        
         return playerGroup
-    }
-    
-    static func saveGroup() {
-        do {
-            try context.save()
-        } catch let error {
-            print("Could not save \(error.localizedDescription)")
-        }
     }
     
     static func delete(group: PlayerGroup) {
         context.delete(group)
-        
-        saveGroup()
+        save()
     }
-    
     
     
     static func retrieveGroups() -> [PlayerGroup] {
         do {
             let fetchRequest = NSFetchRequest<PlayerGroup>(entityName: "PlayerGroup")
+            let results = try context.fetch(fetchRequest)
+            
+            return results
+        } catch let error {
+            print("Could not fetch \(error.localizedDescription)")
+            
+            return []
+        }
+    }
+    
+    
+    //Score Entity
+    static func newScore() -> Score {
+        let score = NSEntityDescription.insertNewObject(forEntityName: "Score", into: context) as! Score
+        
+        return score
+    }
+
+    static func delete(score: Score) {
+        context.delete(score)
+        
+        save()
+    }
+    
+    
+    static func retrieveScores() -> [Score] {
+        do {
+            let fetchRequest = NSFetchRequest<Score>(entityName: "Score")
             let results = try context.fetch(fetchRequest)
             
             return results
@@ -163,42 +158,17 @@ extension PlayerGroup {
             return []
         }
         
-        return players.allObjects as! [Player]
+        return players.array as! [Player]
     }
 }
 
-extension Game {
-    var players: [Player] {
-        guard let players = self.playersSet else {
+extension Player {
+    var scores_ar: [Score] {
+        guard let scores_ar = self.scores else {
             return []
         }
         
-        return players.allObjects as! [Player]
+        return scores_ar.allObjects as! [Score]
     }
 }
-    
-//    
-//    static func retrievePlayers(for group: PlayerGroup) -> [Player] {
-//        do {
-//            
-//            let fetchRequest = NSFetchRequest<Player>(entityName: "Player")
-//            fetchRequest.predicate = NSPredicate(format: "group == %@", group)
-//            let results = try context.fetch(fetchRequest)
-//            
-//            return results
-//        } catch let error {
-//            print("Could not fetch \(error.localizedDescription)")
-//            
-//            return []
-//        }
-//    }
-//    
-    
-    
-    
-
-
-
-
-
 

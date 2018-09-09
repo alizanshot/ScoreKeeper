@@ -12,35 +12,16 @@ class OldGameTableViewCell: UITableViewCell {
     
     @IBOutlet weak var oldGameNameLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var oldWinner: UILabel!
     
-    var creationDate = Date()
-    
-        override func awakeFromNib() {
-            super.awakeFromNib()
-    
-            // Initialization code
-        }
-    var oldWinner: String?
-    
-    @IBOutlet weak var recievedOldWinner: UILabel!
-    
-    
-
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-       
-
-        // Configure the view for the selected state
-        
-        if let text = oldWinner {
-            recievedOldWinner?.text = text
-            
-        } else {
-            recievedOldWinner?.text = "0"
-        }
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code
     }
     
-    
-
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+        //CoreDataHelper.retrievePlayers()
+        // Configure the view for the selected state
+    }
 }

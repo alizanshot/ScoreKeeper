@@ -25,6 +25,7 @@
 		9161C9DC21065B5600858FD8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9161C9DA21065B5600858FD8 /* LaunchScreen.storyboard */; };
 		917083EF210A84E50083870D /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 917083EE210A84E50083870D /* TableViewCell.swift */; };
 		917902A02114C5C3003B65AE /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9179029F2114C5C3003B65AE /* CoreDataHelper.swift */; };
+		918A74562127F4000063D81A /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 918A74552127F4000063D81A /* InitialViewController.swift */; };
 		91D3AF02210F80330082A328 /* EndOfGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D3AF01210F80330082A328 /* EndOfGameViewController.swift */; };
 		91E2FD8F2114FEA700572462 /* OldGameTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E2FD8E2114FEA700572462 /* OldGameTableViewController.swift */; };
 /* End PBXBuildFile section */
@@ -50,6 +51,7 @@
 		9161C9DD21065B5600858FD8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		917083EE210A84E50083870D /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		9179029F2114C5C3003B65AE /* CoreDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
+		918A74552127F4000063D81A /* InitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
 		91D3AF01210F80330082A328 /* EndOfGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndOfGameViewController.swift; sourceTree = "<group>"; };
 		91E2FD8E2114FEA700572462 /* OldGameTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldGameTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -122,6 +124,7 @@
 			isa = PBXGroup;
 			children = (
 				91022FB82112761F00B5B64F /* StartNewGameController.swift */,
+				918A74552127F4000063D81A /* InitialViewController.swift */,
 				9161C9D021065B5200858FD8 /* ViewController.swift */,
 				914ADC6621094CE7004A47AA /* MainGameController.swift */,
 				91D3AF01210F80330082A328 /* EndOfGameViewController.swift */,
@@ -207,6 +210,7 @@
 				917902A02114C5C3003B65AE /* CoreDataHelper.swift in Sources */,
 				915DE33421190A5F00705189 /* OldGameInfoTableViewCell.swift in Sources */,
 				915DE3302118F0A600705189 /* OldGameInfo.swift in Sources */,
+				918A74562127F4000063D81A /* InitialViewController.swift in Sources */,
 				91E2FD8F2114FEA700572462 /* OldGameTableViewController.swift in Sources */,
 				915DE33A211DF47F00705189 /* SegueTransition.swift in Sources */,
 				915DE338211A5F3A00705189 /* PlayerGroupTableViewCell.swift in Sources */,
@@ -368,6 +372,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = C378TMZW64;
 				INFOPLIST_FILE = ScoreKeeper/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -376,7 +381,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -388,6 +393,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = C378TMZW64;
 				INFOPLIST_FILE = ScoreKeeper/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -396,7 +402,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

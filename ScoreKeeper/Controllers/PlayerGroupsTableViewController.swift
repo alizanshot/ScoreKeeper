@@ -10,6 +10,7 @@ import UIKit
 
 class PlayerGroupsTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    var game: Game?
     var groups = [PlayerGroup]()
     var row = 0
 
@@ -18,20 +19,16 @@ class PlayerGroupsTableViewController: UIViewController, UITableViewDelegate, UI
     override func viewDidLoad() {
         super.viewDidLoad()
         groups = CoreDataHelper.retrieveGroups()
-        print(groups)
-        print(groups.count)
         navigationItem.title = "Player Groups"
         tableView.delegate = self
         tableView.dataSource = self
-        // Get players from group like this:
         
-//         let players = groups[0].playerGroup
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "New Group", style: .plain, target: self, action: #selector(justSegue))
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+    }
+    
+    @objc func justSegue(){
+        performSegue(withIdentifier: "FromPGtoAP", sender: (Any).self)
     }
     
     @IBAction func unwindToPlayerGroups(_ segue: UIStoryboardSegue) {
@@ -50,29 +47,24 @@ class PlayerGroupsTableViewController: UIViewController, UITableViewDelegate, UI
         return 1
     }
 
-     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return groups.count
     }
 
     
-     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         tableView.rowHeight = 80
         let cell = tableView.dequeueReusableCell(withIdentifier: "playerGroup", for: indexPath) as! PlayerGroupTableViewCell
-//        let group = groups[indexPath.row]
         
         let playerGroupCell = groups[indexPath.row]
         cell.playerGroupLabel.text = playerGroupCell.title
         
-      //  cell.textLabel?.text = playerGroupLabel.text
-        
         return cell
     }
     
-
-    
     // Override to support conditional editing of the table view.
-     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
         return true
     }
@@ -88,82 +80,25 @@ class PlayerGroupsTableViewController: UIViewController, UITableViewDelegate, UI
         }
     }
     
-     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        row = indexPath.row
-//        let playerGroup = groups[indexPath.row]
-        
-        
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedGroup = groups[indexPath.row]
-        let newGame = CoreDataHelper.newGame(from: selectedGroup)
+
+        game?.playerGroup = selectedGroup
         
-        
-        let alertGameTitle = UIAlertController(title: "Create a Game With This Group", message: "Enter the title of this new game", preferredStyle: .alert)
-        alertGameTitle.addTextField(configurationHandler: { (textField) in
-            textField.placeholder = "Game Title"
-        })
-        let nextButton = UIAlertAction(title: "Start Game", style: .default, handler: { (_) in
-            //create the group
-            newGame.name = alertGameTitle.textFields!.first!.text!
-            newGame.date = Date()
-            CoreDataHelper.save()
-            self.performSegue(withIdentifier: "toMainGame", sender: newGame)
-        })
-        
-        alertGameTitle.addAction(nextButton)
-        
-        let cancelButton = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        alertGameTitle.addAction(cancelButton)
-        
-        self.present(alertGameTitle, animated: true)
-        
-        
-        
-//        let currentCell = tableView.cellForRowAtIndexPath(indexPath!) as UITableViewCell!
-//        CoreDataHelper.newGame()
-//        MainGameController.
-//
+        self.performSegue(withIdentifier: "toMainGame", sender: game)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        if segue.identifier == "toMainGame" {
-            let destinationVC = segue.destination as! MainGameController
-            destinationVC.currentGame = sender as! Game
+        if segue.destination is MainGameController {
+            let vc = segue.destination as! MainGameController
+            vc.currentGame = game
+        } else if segue.destination is ViewController {
+            let vc = segue.destination as! ViewController
+            if game?.playerGroup == nil {
+                game?.playerGroup = CoreDataHelper.newGroup()
+            }
+            vc.game = game
         }
-        
-        
-        //send selected group to next vc
-//         guard let playerGroup = group.playerGroup?.allObjects as? [Player] else { return }
-//
-//        if segue.identifier == "toMainGame" {
-//            let destinationVC = segue.destination as! MainGameController
-//            destinationVC.selectedGroup = group
-//        }
     }
-    
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

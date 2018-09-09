@@ -22,12 +22,15 @@ class EndOfGameViewController:  UIViewController {
     @IBOutlet weak var secondPlaceLabel: UILabel!
     
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         goHomeButtonLabel?.layer.cornerRadius = 15
         goHomeButtonLabel?.layer.masksToBounds = true
-        
 
+        //self.navigationItem.setHidesBackButton(true, animated:true)
+        
         //checking that value is not nil and also storing the winningPlayer in a variable to wait for this view controller to load, and then after it loads i use the playerWithLargestScore variable in the MainGameController and pass it into this controller. Basically I couldn't directly pass the data into the winningPlayer label because it hadn't loaded yet
         if let text = playerWithLargestScore {
             winningPlayer?.text = text
@@ -37,28 +40,18 @@ class EndOfGameViewController:  UIViewController {
         else {
             winningPlayer?.text = "0"
         }
-        
-//        if let text2 = secondPlacePlayer{
-//            secondPlaceLabel?.text = 
-//        }
-      
-        
     }
     
     
-    
-    
+    @IBAction func goHomeButtonTapped(_ sender: Any) {
+        CoreDataHelper.save()
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 
-    
-
-    
-    // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
